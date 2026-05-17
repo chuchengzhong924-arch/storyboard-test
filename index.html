@@ -47,15 +47,15 @@
       mask-image: linear-gradient(to bottom, black, transparent 82%);
     }
 
-    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 70px; }
+    .page { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 70px; }
 
     .hero {
       position: relative;
       overflow: hidden;
-      min-height: 520px;
+      min-height: clamp(420px, 48vw, 560px);
       display: grid;
       align-items: end;
-      padding: clamp(28px, 6vw, 72px);
+      padding: clamp(28px, 5vw, 60px);
       border: 1px solid var(--line);
       border-radius: 34px;
       box-shadow: 0 28px 90px var(--shadow);
@@ -87,11 +87,11 @@
       text-transform: uppercase;
     }
 
-    h1 { margin: 0; max-width: 850px; font-size: clamp(42px, 8vw, 98px); line-height: 0.98; letter-spacing: 0.03em; }
+    h1 { margin: 0; max-width: 780px; font-size: clamp(38px, 6vw, 78px); line-height: 1.05; letter-spacing: 0.03em; text-wrap: balance; }
 
-    .lead { max-width: 760px; margin: 24px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 20px); line-height: 1.9; }
+    .lead { max-width: 720px; margin: 18px 0 0; color: var(--muted); font-size: clamp(16px, 1.8vw, 19px); line-height: 1.85; }
 
-    .meta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 34px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
     .meta-card { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(8, 9, 13, 0.54); backdrop-filter: blur(10px); }
     .meta-card strong { display: block; color: var(--gold-soft); font-size: 26px; line-height: 1.1; }
     .meta-card span { display: block; margin-top: 8px; color: var(--dim); font-size: 13px; letter-spacing: 0.08em; }
@@ -100,24 +100,23 @@
     .section-head h2 { margin: 0; font-size: clamp(28px, 4vw, 44px); }
     .section-head p { max-width: 560px; margin: 0; color: var(--muted); line-height: 1.75; }
 
-    .storyboard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .storyboard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
 
     .shot-card {
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(220px, 42%) 1fr;
-      min-height: 360px;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(145deg, var(--card), rgba(12, 14, 19, 0.92));
+      border-radius: 30px;
+      background: linear-gradient(145deg, var(--card), rgba(12, 14, 19, 0.94));
       box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
     }
 
     .shot-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(217, 180, 106, 0.10), transparent 36%, rgba(183, 65, 46, 0.08)); }
 
-    .shot-media { position: relative; min-height: 100%; margin: 0; background: #1a1c22; }
-    .shot-media img { width: 100%; height: 100%; min-height: 360px; display: block; object-fit: cover; filter: saturate(0.92) contrast(1.05); }
+    .shot-media { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0; overflow: hidden; background: #1a1c22; }
+    .shot-media img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(0.92) contrast(1.05); }
     .shot-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.52)); pointer-events: none; }
 
     .number {
@@ -138,8 +137,8 @@
       letter-spacing: 0.16em;
     }
 
-    .shot-body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; }
-    .shot-title { margin: 0; font-size: clamp(23px, 2.6vw, 32px); line-height: 1.22; }
+    .shot-body { position: relative; z-index: 1; display: flex; flex: 1; flex-direction: column; gap: 16px; padding: 24px 24px 26px; }
+    .shot-title { margin: 0; font-size: clamp(23px, 2.2vw, 30px); line-height: 1.22; }
     .shot-title small { display: block; margin-bottom: 8px; color: var(--vermilion); font-size: 12px; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.22em; text-transform: uppercase; }
 
     .field { padding-left: 14px; border-left: 2px solid rgba(217, 180, 106, 0.42); }
@@ -152,16 +151,23 @@
     footer { margin-top: 34px; padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: rgba(20, 22, 28, 0.72); color: var(--muted); line-height: 1.85; }
     footer strong { color: var(--gold-soft); }
 
-    @media (max-width: 1040px) { .storyboard { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .storyboard { grid-template-columns: 1fr; gap: 22px; } }
     @media (max-width: 760px) {
-      .page { width: min(100% - 24px, 1180px); padding-top: 22px; }
-      .hero { min-height: 560px; border-radius: 24px; background-position: 58% center; }
+      .page { width: min(100% - 24px, 1240px); padding-top: 22px; }
+      .hero { min-height: 460px; border-radius: 24px; background-position: 58% center; }
       .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .section-head { display: block; }
+      .section-head { display: block; margin-top: 42px; }
       .section-head p { margin-top: 12px; }
-      .shot-card { grid-template-columns: 1fr; }
-      .shot-media img { min-height: 250px; aspect-ratio: 16 / 10; }
+      .shot-media { aspect-ratio: 16 / 9; }
       .shot-body { padding: 20px; }
+    }
+
+    @media (max-width: 520px) {
+      .page { width: min(100% - 18px, 1240px); }
+      .hero { min-height: 420px; padding: 24px 20px; }
+      .meta-grid { grid-template-columns: 1fr; gap: 10px; }
+      .shot-card { border-radius: 22px; }
+      .number { left: 12px; top: 12px; padding: 7px 10px; font-size: 13px; }
     }
   </style>
 </head>
