@@ -137,39 +137,115 @@
     .shot-card {
       display: flex;
       flex-direction: column;
-      min-height: 390px;
+      min-height: 510px;
       border-radius: 26px;
       overflow: hidden;
-      background: rgba(255, 252, 245, 0.9);
+      background: rgba(255, 252, 245, 0.92);
       border: 1px solid rgba(45, 31, 23, 0.12);
       box-shadow: 0 16px 42px rgba(45, 31, 23, 0.12);
     }
 
-    .frame {
-      min-height: 138px;
-      padding: 22px;
+    .shot-visual {
+      position: relative;
+      margin: 0;
+      min-height: 212px;
+      overflow: hidden;
       color: #fff7e8;
       background:
-        linear-gradient(135deg, rgba(49, 90, 74, 0.95), rgba(167, 53, 36, 0.8)),
-        repeating-linear-gradient(45deg, transparent 0 10px, rgba(255,255,255,0.06) 10px 11px);
+        radial-gradient(circle at 72% 18%, var(--sun, rgba(200, 152, 61, 0.45)), transparent 13%),
+        linear-gradient(135deg, var(--wash-a, #f4ead3), var(--wash-b, #9fb7a3) 52%, var(--wash-c, #30483f));
     }
 
-    .frame .number {
+    .shot-visual::before,
+    .shot-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .shot-visual::before {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.45), transparent 20%),
+        radial-gradient(circle at 82% 68%, rgba(45, 31, 23, 0.18), transparent 28%);
+      mix-blend-mode: soft-light;
+    }
+
+    .shot-visual::after {
+      opacity: 0.28;
+      background-image:
+        linear-gradient(100deg, rgba(45, 31, 23, 0.12) 0 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.22) 0 1px, transparent 1px);
+      background-size: 42px 42px, 100% 16px;
+    }
+
+    .shot-visual svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .shot-visual .number {
+      position: absolute;
+      z-index: 2;
+      top: 18px;
+      left: 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 252, 245, 0.2);
+      border: 1px solid rgba(255, 252, 245, 0.42);
+      color: #fff7e8;
       font-weight: 800;
+      backdrop-filter: blur(3px);
     }
 
-    .frame h3 {
-      margin: 18px 0 0;
-      font-size: 23px;
-      line-height: 1.28;
+    .shot-visual .caption {
+      position: absolute;
+      z-index: 2;
+      right: 16px;
+      bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(45, 31, 23, 0.28);
+      color: rgba(255, 247, 232, 0.86);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      backdrop-filter: blur(4px);
+    }
+
+    .ink-line {
+      fill: none;
+      stroke: rgba(45, 31, 23, 0.66);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ink-fill {
+      fill: rgba(45, 31, 23, 0.58);
+    }
+
+    .paper-stroke {
+      fill: none;
+      stroke: rgba(255, 247, 232, 0.62);
+      stroke-linecap: round;
+    }
+
+    .vermilion-fill {
+      fill: rgba(167, 53, 36, 0.78);
+    }
+
+    .green-fill {
+      fill: rgba(49, 90, 74, 0.72);
+    }
+
+    .gold-fill {
+      fill: rgba(200, 152, 61, 0.72);
     }
 
     .shot-body {
@@ -177,6 +253,27 @@
       gap: 14px;
       padding: 20px;
       flex: 1;
+    }
+
+    .shot-heading {
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(167, 53, 36, 0.16);
+    }
+
+    .shot-heading h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.28;
+    }
+
+    .shot-heading span {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
     }
 
     .field {
@@ -267,8 +364,12 @@
     <h2 class="section-title">分镜脚本</h2>
     <section class="storyboard" aria-label="文天祥故事12个分镜">
       <article class="shot-card">
-        <div class="frame"><span class="number">01</span><h3>山河风雨</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：临安山河风雨" style="--wash-a:#efe0c5; --wash-b:#7f918c; --wash-c:#263c3a; --sun:rgba(167,53,36,0.36);">
+          <span class="number">01</span><span class="caption">山河风雨</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="ink-fill" d="M0 159c32-37 57-47 85-24 21 17 45 20 75-5 29-24 58-25 93 9 24 23 54 22 107-12v93H0z"/><path class="ink-line" stroke-width="9" d="M58 72c35-15 68-17 96-5 34 14 73 10 118-13"/><path class="paper-stroke" stroke-width="3" d="M62 131h83M235 119h64M177 93l24-18 25 19"/><path class="vermilion-fill" d="M97 84h8v58h-8zM105 86c22 2 34 10 54 8-8 14-28 20-54 14z"/><circle class="gold-fill" cx="286" cy="52" r="24" opacity=".55"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>山河风雨</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>乌云压城，临安城门外军旗猎猎，百姓拖家带口避乱，远处烽烟升起。</p></div>
           <div class="field"><b>旁白</b><p>南宋末年，山河破碎，风雨飘摇，一个读书人走向了时代的风口。</p></div>
           <div class="field"><b>情绪氛围</b><p>沉重、紧迫、乱世压迫感。</p></div>
@@ -277,8 +378,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">02</span><h3>少年立志</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：书斋少年立志" style="--wash-a:#fbf1d8; --wash-b:#d7bf86; --wash-c:#516d5b; --sun:rgba(255,247,232,0.56);">
+          <span class="number">02</span><span class="caption">少年立志</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M52 55h107v91H52zM202 52h94M202 82h70M202 112h82"/><path class="ink-line" stroke-width="8" d="M79 151c32 13 71 14 116 4 35-8 68-4 101 10"/><path class="ink-fill" d="M110 81c18 0 34 18 34 42h-68c0-24 16-42 34-42z"/><path class="vermilion-fill" d="M236 133c4-22 22-26 36-13 13 12 11 35-13 54-29-18-35-33-23-41z" opacity=".65"/><path class="gold-fill" d="M77 130h112v8H77z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>少年立志</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>少年文天祥在书斋中临窗诵读，案上烛火摇曳，墙上挂着山河舆图。</p></div>
           <div class="field"><b>旁白</b><p>文天祥自幼勤学，以圣贤气节自勉，心中早已种下报国之志。</p></div>
           <div class="field"><b>情绪氛围</b><p>清朗、坚定、带有理想光芒。</p></div>
@@ -287,8 +392,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">03</span><h3>金榜题名</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：殿试金榜题名" style="--wash-a:#fff2d2; --wash-b:#c89b55; --wash-c:#744735; --sun:rgba(255,231,150,0.48);">
+          <span class="number">03</span><span class="caption">金榜题名</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="gold-fill" d="M82 45h196v112H82z" opacity=".5"/><path class="paper-stroke" stroke-width="6" d="M105 70h150M105 95h123M105 120h150"/><path class="ink-line" stroke-width="10" d="M55 171c35-12 76-17 123-15 44 2 88-5 132-23"/><path class="ink-fill" d="M176 103c25 0 45 24 45 58h-90c0-34 20-58 45-58z"/><path class="vermilion-fill" d="M168 88h16l7 25h-30z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>金榜题名</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>殿试放榜，文天祥身着官服立于朝堂，光线从宫门照入。</p></div>
           <div class="field"><b>旁白</b><p>二十岁中状元，他原本可以拥有安稳仕途，却选择把一生交给国家。</p></div>
           <div class="field"><b>情绪氛围</b><p>庄重、昂扬、命运开启。</p></div>
@@ -297,8 +406,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">04</span><h3>临危受命</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：朝堂临危受命" style="--wash-a:#f5dfbd; --wash-b:#a26b52; --wash-c:#2d2b2d; --sun:rgba(167,53,36,0.42);">
+          <span class="number">04</span><span class="caption">临危受命</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="7" d="M42 62h276M71 62v93M289 62v93"/><path class="ink-fill" d="M146 103c27 0 49 26 49 62h-98c0-36 22-62 49-62zM236 122c21 0 38 19 38 45h-76c0-26 17-45 38-45z"/><path class="vermilion-fill" d="M171 91l74 15-5 24-74-15z"/><path class="gold-fill" d="M184 97l43 8-3 12-43-8z"/><path class="ink-line" stroke-width="8" d="M45 171c72 16 163 12 270-12"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>临危受命</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>朝堂上群臣惊惶，文天祥上前接过诏书，镜头推近他沉静的眼神。</p></div>
           <div class="field"><b>旁白</b><p>元军南下，朝局危急。危难之时，他挺身而出，筹兵勤王。</p></div>
           <div class="field"><b>情绪氛围</b><p>压抑中见担当，肃穆有力。</p></div>
@@ -307,8 +420,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">05</span><h3>变卖家产</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：变卖家产筹集义军" style="--wash-a:#f2e2c4; --wash-b:#b08b61; --wash-c:#33483b; --sun:rgba(200,152,61,0.36);">
+          <span class="number">05</span><span class="caption">变卖家产</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="ink-line" stroke-width="7" d="M53 151h111l17-57H72zM202 141h94M216 116h66M225 91h49"/><path class="gold-fill" d="M82 112h74v39H82z" opacity=".78"/><circle class="vermilion-fill" cx="210" cy="158" r="15"/><circle class="ink-fill" cx="278" cy="158" r="15"/><path class="green-fill" d="M207 70c42 2 72 11 103 32-38 4-69-1-103-14z"/><path class="paper-stroke" stroke-width="4" d="M49 173c71 8 155 5 257-8"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>变卖家产</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>家中箱柜打开，银两、书籍与器物被整理装车，乡勇在院外集结。</p></div>
           <div class="field"><b>旁白</b><p>为组织义军，他散尽家财。个人安危，在家国存亡面前退到身后。</p></div>
           <div class="field"><b>情绪氛围</b><p>悲壮、果决、牺牲感。</p></div>
@@ -317,8 +434,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">06</span><h3>烽火行军</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：雨中烽火行军" style="--wash-a:#dfe4db; --wash-b:#6f8a83; --wash-c:#243a3a; --sun:rgba(255,255,255,0.26);">
+          <span class="number">06</span><span class="caption">烽火行军</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="3" d="M78 41l-22 47M134 34l-21 55M252 31l-23 58M307 45l-18 42"/><path class="ink-fill" d="M73 145c28-30 57-38 87-23 18 9 36 28 62 19 33-11 59-29 111-8v87H0v-46c24-11 48-20 73-29z"/><path class="vermilion-fill" d="M113 68h7v68h-7zM120 70c28 1 44 15 67 11-10 18-35 26-67 18z"/><path class="gold-fill" d="M240 90c22 3 34 19 31 40l-73-8c5-23 19-35 42-32z"/><path class="paper-stroke" stroke-width="5" d="M47 168c67 12 151 10 261-6"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>烽火行军</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>义军冒雨前行，泥水溅起，文天祥骑马回望队伍，旗帜在风中翻卷。</p></div>
           <div class="field"><b>旁白</b><p>前路艰险，他仍带着微弱兵力奔赴战场，只为守住最后的希望。</p></div>
           <div class="field"><b>情绪氛围</b><p>苍凉、坚韧、逆风前行。</p></div>
@@ -327,8 +448,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">07</span><h3>兵败被俘</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：海风兵败被俘" style="--wash-a:#d9dedb; --wash-b:#617b86; --wash-c:#24303b; --sun:rgba(167,53,36,0.22);">
+          <span class="number">07</span><span class="caption">兵败被俘</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M36 149c37-10 70-10 100 0s62 10 97 0 64-10 91 0M55 170c31-7 58-7 84 0s57 7 91 0 62-7 85 0"/><path class="ink-fill" d="M76 120h176l-29 48H109z"/><path class="ink-line" stroke-width="8" d="M143 116l-27-61M143 116l80-34"/><path class="vermilion-fill" d="M98 62h7v72h-7zM105 67c20 0 33 10 53 7-9 16-29 21-53 14z" opacity=".56"/><path class="gold-fill" d="M214 112c19 0 33 18 33 43h-66c0-25 14-43 33-43z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>兵败被俘</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>海风猛烈，残旗落地，文天祥被押上船，身后是散乱的甲胄与沉默士卒。</p></div>
           <div class="field"><b>旁白</b><p>兵败之后，他落入敌手。身体可以被囚禁，信念却不肯低头。</p></div>
           <div class="field"><b>情绪氛围</b><p>低沉、悲怆、信念未灭。</p></div>
@@ -337,8 +462,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">08</span><h3>过零丁洋</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：过零丁洋孤船写诗" style="--wash-a:#e4e9e2; --wash-b:#83a5b2; --wash-c:#33455d; --sun:rgba(255,247,232,0.34);">
+          <span class="number">08</span><span class="caption">过零丁洋</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M29 136c40-12 74-12 103 0s60 12 94 0 66-12 105 0M51 163c34-9 62-9 86 0s55 9 92 0 64-9 91 0"/><path class="ink-fill" d="M117 121h139l-31 32h-83z"/><path class="ink-line" stroke-width="6" d="M173 119l30-55M173 119l-45-42"/><path class="gold-fill" d="M207 82h54v38h-54z" opacity=".62"/><path class="paper-stroke" stroke-width="4" d="M74 78c50-25 104-29 163-13"/><path class="vermilion-fill" d="M219 172c16 3 27 12 34 29-26-6-43-16-50-30z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>过零丁洋</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>孤船穿过灰蓝海面，文天祥倚栏望向浪涛，手中写下诗句。</p></div>
           <div class="field"><b>旁白</b><p>零丁洋上，他把国破家亡的痛，凝成千古不灭的诗篇。</p></div>
           <div class="field"><b>情绪氛围</b><p>孤绝、悲凉、诗意升华。</p></div>
@@ -347,8 +476,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">09</span><h3>丹心一问</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：丹心诗句铺展" style="--wash-a:#f7ead5; --wash-b:#c99576; --wash-c:#70322b; --sun:rgba(167,53,36,0.54);">
+          <span class="number">09</span><span class="caption">丹心一问</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="8" d="M70 45h220v124H70z"/><path class="ink-line" stroke-width="7" d="M105 83h82M105 111h143M105 139h113"/><path class="vermilion-fill" d="M252 83c17-22 53-6 45 25-5 18-23 36-50 53-26-23-38-42-33-60 5-18 25-25 38-18z" opacity=".82"/><path class="ink-fill" d="M52 178c58-12 120-16 186-11 29 2 55-1 79-10v63H0v-31c16-4 33-8 52-11z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>丹心一问</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>画面转为近景，墨迹在纸上铺开：“人生自古谁无死，留取丹心照汗青。”</p></div>
           <div class="field"><b>旁白</b><p>面对生死，他给出的答案，是让赤诚之心照亮史册。</p></div>
           <div class="field"><b>情绪氛围</b><p>震撼、崇高、情感高潮。</p></div>
@@ -357,8 +490,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">10</span><h3>牢中劝降</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：牢中拒绝劝降" style="--wash-a:#d9cbb8; --wash-b:#665f58; --wash-c:#1e1d20; --sun:rgba(200,152,61,0.28);">
+          <span class="number">10</span><span class="caption">牢中劝降</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="8" d="M64 42v142M113 42v142M162 42v142M211 42v142M260 42v142M309 42v142" opacity=".7"/><path class="ink-fill" d="M168 100c25 0 45 25 45 61h-90c0-36 20-61 45-61z"/><path class="gold-fill" d="M246 126h42v39h-42z"/><path class="vermilion-fill" d="M251 98h33v28h-33z"/><circle class="gold-fill" cx="86" cy="152" r="18" opacity=".65"/><path class="ink-line" stroke-width="8" d="M40 184c76 10 164 8 278-6"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>牢中劝降</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>幽暗牢房中，劝降者递来官印与锦袍，文天祥端坐不动，烛光映出铁栏。</p></div>
           <div class="field"><b>旁白</b><p>高官厚禄摆在眼前，他却以沉默与拒绝守住最后的尊严。</p></div>
           <div class="field"><b>情绪氛围</b><p>冷峻、克制、内在强大。</p></div>
@@ -367,8 +504,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">11</span><h3>从容赴义</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：晨雾从容赴义" style="--wash-a:#ebe7dc; --wash-b:#b7b89a; --wash-c:#394e46; --sun:rgba(255,247,232,0.6);">
+          <span class="number">11</span><span class="caption">从容赴义</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><circle class="gold-fill" cx="279" cy="60" r="33" opacity=".62"/><path class="paper-stroke" stroke-width="5" d="M37 127c70-25 153-30 250-15M50 151c64-13 134-15 210-6"/><path class="ink-fill" d="M174 89c29 0 52 29 52 72H122c0-43 23-72 52-72z"/><path class="paper-stroke" stroke-width="4" d="M146 122h57"/><path class="vermilion-fill" d="M168 71h14l9 25h-32z"/><path class="ink-line" stroke-width="8" d="M79 178c60 7 132 4 216-9"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>从容赴义</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>清晨薄雾中，文天祥整理衣冠，步伐平稳走向刑场，天空透出一线晨光。</p></div>
           <div class="field"><b>旁白</b><p>生命将尽，他从容赴死。不是没有恐惧，而是有比生命更重的信念。</p></div>
           <div class="field"><b>情绪氛围</b><p>肃穆、悲壮、平静而有力量。</p></div>
@@ -377,8 +518,12 @@
       </article>
 
       <article class="shot-card">
-        <div class="frame"><span class="number">12</span><h3>浩气长存</h3></div>
+        <figure class="shot-visual" aria-label="水墨占位插画：浩气长存照亮山河" style="--wash-a:#fff2d7; --wash-b:#d6a85d; --wash-c:#315a4a; --sun:rgba(200,152,61,0.62);">
+          <span class="number">12</span><span class="caption">浩气长存</span>
+          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><circle class="vermilion-fill" cx="284" cy="57" r="35" opacity=".76"/><path class="ink-fill" d="M0 154c33-35 63-42 90-21 20 15 43 17 71-5 31-25 64-21 98 8 30 25 61 23 101-3v87H0z"/><path class="paper-stroke" stroke-width="7" d="M67 91c38-22 76-23 113-6 34 15 70 14 108-2"/><path class="gold-fill" d="M93 148h154v48H93z" opacity=".55"/><path class="paper-stroke" stroke-width="4" d="M111 164h104M111 181h81"/><path class="vermilion-fill" d="M251 121c24 4 42 16 57 37-34-2-56-11-70-28z"/></svg>
+        </figure>
         <div class="shot-body">
+          <div class="shot-heading"><h3>浩气长存</h3><span>镜头标题</span></div>
           <div class="field"><b>画面描述</b><p>镜头从史书翻页升起，转向今日山河与学子诵读，红日照亮书页。</p></div>
           <div class="field"><b>旁白</b><p>岁月远去，文天祥的浩然正气仍在回响，提醒后来者何为忠义与担当。</p></div>
           <div class="field"><b>情绪氛围</b><p>开阔、庄严、余韵悠长。</p></div>
