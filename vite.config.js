@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Vite dev server already serves BrowserRouter SPA fallback.
-// For static hosting, configure the host to rewrite all paths to /index.html.
+// Emit relative asset URLs so the static build works from either a domain root
+// or a repository subdirectory (for example GitHub Pages).
 export default defineConfig({
+  base: './',
   plugins: [react()],
 });

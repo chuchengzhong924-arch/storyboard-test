@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import { backgroundImage } from '../assets.js';
 
 export default function AiFilm() {
   return (
     <main className="page">
-      <section className="hero page-hero" aria-labelledby="ai-film-title">
+      <section className="hero page-hero" style={backgroundImage('scene-20.png')} aria-labelledby="ai-film-title">
         <div>
           <p className="eyebrow">AI Movie Projects</p>
           <h1 id="ai-film-title">AI电影制作</h1>

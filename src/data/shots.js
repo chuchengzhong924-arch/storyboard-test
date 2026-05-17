@@ -1,7 +1,9 @@
+import { assetUrl } from '../assets.js';
+
 export const shots = [
   {
     "number": 1,
-    "image": "/scene-01.png",
+    "image": assetUrl("scene-01.png"),
     "alt": "第1镜：崖山帝舟殉国",
     "title": "崖山帝舟殉国",
     "description": "1279年二月，崖山海面残阳如血，战船焚烧、断桅漂流。陆秀夫背负幼主赵昺立于船舷，南宋最后的帝舟被硝烟与浪涛围困。",
@@ -11,7 +13,7 @@ export const shots = [
   },
   {
     "number": 2,
-    "image": "/scene-02.png",
+    "image": assetUrl("scene-02.png"),
     "alt": "第2镜：黑幕显影：元船押解",
     "title": "黑幕显影：元船押解",
     "description": "炮火与海浪先于画面出现；黑暗中，文天祥的侧脸被船头火光照亮。他被元军押解，跪立却脊背挺直，凝望故国沉入夜色。",
@@ -21,7 +23,7 @@ export const shots = [
   },
   {
     "number": 3,
-    "image": "/scene-03.png",
+    "image": assetUrl("scene-03.png"),
     "alt": "第3镜：海面残旗与生死誓言",
     "title": "海面残旗与生死誓言",
     "description": "灰蓝海面漂浮着破碎盔甲、木板与宋旗。镜头掠过尸横海面，定格在一面被海水浸透仍未沉没的残旗上。",
@@ -31,7 +33,7 @@ export const shots = [
   },
   {
     "number": 4,
-    "image": "/scene-04.png",
+    "image": assetUrl("scene-04.png"),
     "alt": "第4镜：片名：文天祥",
     "title": "片名：文天祥",
     "description": "战火余烬化作墨色云烟，金石质感的片名从黑暗中浮现；火星缓缓上升，如史册中未灭的丹心。",
@@ -41,7 +43,7 @@ export const shots = [
   },
   {
     "number": 5,
-    "image": "/scene-05.png",
+    "image": assetUrl("scene-05.png"),
     "alt": "第5镜：赣州街头朝报",
     "title": "赣州街头朝报",
     "description": "德祐元年，赣州街头尘土飞扬。卖朝报的小哥穿过惊惶人群，手中诏书被风吹得猎猎作响，百姓停步围听。",
@@ -51,7 +53,7 @@ export const shots = [
   },
   {
     "number": 6,
-    "image": "/scene-06.png",
+    "image": assetUrl("scene-06.png"),
     "alt": "第6镜：州衙读《哀痛诏》",
     "title": "州衙读《哀痛诏》",
     "description": "州衙内光线低沉，文天祥双手捧诏，泪水落在纸面。他身后的案牍、官印与地图，映出文臣必须作出的抉择。",
@@ -61,7 +63,7 @@ export const shots = [
   },
   {
     "number": 7,
-    "image": "/scene-07.png",
+    "image": assetUrl("scene-07.png"),
     "alt": "第7镜：文家粮仓开仓",
     "title": "文家粮仓开仓",
     "description": "沉重仓门打开，粮袋、银箱与家产被运出。家仆与义士列队接应，私家灯火转化为抗元军资。",
@@ -71,7 +73,7 @@ export const shots = [
   },
   {
     "number": 8,
-    "image": "/scene-08.png",
+    "image": assetUrl("scene-08.png"),
     "alt": "第8镜：大殿钦点状元",
     "title": "大殿钦点状元",
     "description": "回忆闪回至宝祐四年，金殿明亮。二十一岁的文天祥立于丹陛之下，衣冠整肃，宋理宗与群臣的目光落在他身上。",
@@ -81,7 +83,7 @@ export const shots = [
   },
   {
     "number": 9,
-    "image": "/scene-09.png",
+    "image": assetUrl("scene-09.png"),
     "alt": "第9镜：广场举义演讲",
     "title": "广场举义演讲",
     "description": "赣州广场上朱砂旗帜翻涌，文天祥由文臣袍服披上战甲，面向义兵与百姓举臂疾呼。",
@@ -91,7 +93,7 @@ export const shots = [
   },
   {
     "number": 10,
-    "image": "/scene-10.png",
+    "image": assetUrl("scene-10.png"),
     "alt": "第10镜：文府母子托付",
     "title": "文府母子托付",
     "description": "室内烛光温暖而沉重，文母取下首饰放入盘中。文天祥伏身行礼，母子之间没有挽留，只有家国托付。",
@@ -101,7 +103,7 @@ export const shots = [
   },
   {
     "number": 11,
-    "image": "/scene-11.png",
+    "image": assetUrl("scene-11.png"),
     "alt": "第11镜：城门外出征回望",
     "title": "城门外出征回望",
     "description": "城门开启，义军北上，旌旗与尘土遮住半边天空。文天祥在马上回望赣州，片刻后转身向前。",
@@ -111,7 +113,7 @@ export const shots = [
   },
   {
     "number": 12,
-    "image": "/scene-12.png",
+    "image": assetUrl("scene-12.png"),
     "alt": "第12镜：临安岔路选择",
     "title": "临安岔路选择",
     "description": "闪回临安城外岔路，一边通往文山归隐，一边通向国事风暴。老仆牵马相随，文天祥望向兵燹方向。",
@@ -121,7 +123,7 @@ export const shots = [
   },
   {
     "number": 13,
-    "image": "/scene-13.png",
+    "image": assetUrl("scene-13.png"),
     "alt": "第13镜：荒原北上",
     "title": "荒原北上",
     "description": "青灰天空下，十万义兵沿赭黄大地延展成长龙。文天祥的旗帜在队伍前方，像乱世里被高举的一点赤色。",
@@ -131,7 +133,7 @@ export const shots = [
   },
   {
     "number": 14,
-    "image": "/scene-14.png",
+    "image": assetUrl("scene-14.png"),
     "alt": "第14镜：雩都战场大捷",
     "title": "雩都战场大捷",
     "description": "夕阳血红，义兵冲入烟尘，刀戟相撞。文天祥立于战马上指挥，火光与尘土把胜利染成惨烈的颜色。",
@@ -141,7 +143,7 @@ export const shots = [
   },
   {
     "number": 15,
-    "image": "/scene-15.png",
+    "image": assetUrl("scene-15.png"),
     "alt": "第15镜：元营不拜",
     "title": "元营不拜",
     "description": "元营大帐内火盆炽烈，众人低头跪拜，唯有文天祥立而不屈。伯颜居高而坐，帐影将双方切成明暗两界。",
@@ -151,7 +153,7 @@ export const shots = [
   },
   {
     "number": 16,
-    "image": "/scene-16.png",
+    "image": assetUrl("scene-16.png"),
     "alt": "第16镜：痛骂叛臣",
     "title": "痛骂叛臣",
     "description": "降臣上前劝说，文天祥怒目而视，衣袍虽乱，目光却如刀锋。帐中众人被他的斥责震住。",
@@ -161,7 +163,7 @@ export const shots = [
   },
   {
     "number": 17,
-    "image": "/scene-17.png",
+    "image": assetUrl("scene-17.png"),
     "alt": "第17镜：国玺降表蒙太奇",
     "title": "国玺降表蒙太奇",
     "description": "国玺、降表、闭合的宫门与童年学宫交错闪回；现实的崩塌与少年时的志向相互叠化，像一道无法逃避的裂痕。",
@@ -171,7 +173,7 @@ export const shots = [
   },
   {
     "number": 18,
-    "image": "/scene-18.png",
+    "image": assetUrl("scene-18.png"),
     "alt": "第18镜：土牢写《正气歌》",
     "title": "土牢写《正气歌》",
     "description": "元大都土牢，青冷月光与昏黄油灯对冲。文天祥须发蓬乱却端坐如山，在潮湿墙影前落笔写下正气。",
@@ -181,7 +183,7 @@ export const shots = [
   },
   {
     "number": 19,
-    "image": "/scene-19.png",
+    "image": assetUrl("scene-19.png"),
     "alt": "第19镜：童年学宫立志",
     "title": "童年学宫立志",
     "description": "闪回庐陵学宫，少年文天祥仰望先贤画像，清亮的眼神与囚室中的微笑叠化成同一个灵魂。",
@@ -191,7 +193,7 @@ export const shots = [
   },
   {
     "number": 20,
-    "image": "/scene-20.png",
+    "image": assetUrl("scene-20.png"),
     "alt": "第20镜：丹心照汗青",
     "title": "丹心照汗青",
     "description": "至元十九年十二月初九，柴市刑场晨光渐白。文天祥整理衣冠，从容前行，最后的身影被白金色天光托起。",

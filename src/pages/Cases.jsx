@@ -1,9 +1,10 @@
+import { backgroundImage } from '../assets.js';
 import { shots } from '../data/shots.js';
 
 export default function Cases() {
   return (
     <main className="page">
-      <section className="hero page-hero" aria-labelledby="storyboard-title">
+      <section className="hero page-hero" style={backgroundImage('scene-20.png')} aria-labelledby="storyboard-title">
         <div>
           <p className="eyebrow">Historical Teaser / 20 Shots</p>
           <h1 id="storyboard-title">文天祥：丹心照汗青</h1>
