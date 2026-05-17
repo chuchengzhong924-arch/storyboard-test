@@ -3,10 +3,210 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="万影节拍数字有限公司 AI电影制作与《文天祥：丹心照汗青》专业分镜展示。" />
     <title>万影节拍数字有限公司｜AI电影制作</title>
+    <link rel="stylesheet" href="./src/index.css" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      import { backgroundImage } from './src/assets.js';
+      import { shots } from './src/data/shots.js';
+
+      const routes = new Map([
+        ['/', renderHome],
+        ['/ai-film', renderAiFilm],
+        ['/about', renderAbout],
+        ['/cases', renderCases],
+        ['/contact', renderContact],
+      ]);
+
+      const root = document.getElementById('root');
+      const links = [
+        { to: '/', label: '首页' },
+        { to: '/ai-film', label: 'AI电影制作' },
+        { to: '/about', label: '公司介绍' },
+        { to: '/cases', label: '作品案例' },
+        { to: '/contact', label: '联系我们' },
+      ];
+
+      function routeFromHash() {
+        const raw = window.location.hash.replace(/^#/, '') || '/';
+        const path = raw.split('?')[0].replace(/\/$/, '') || '/';
+        return routes.has(path) ? path : '/';
+      }
+
+      function navigate(path) {
+        if (window.location.hash !== `#${path}`) {
+          window.location.hash = path;
+          return;
+        }
+        render();
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#39;');
+      }
+
+      function styleVars(style) {
+        return Object.entries(style)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join('; ');
+      }
+
+      function linkClass(path, current) {
+        return path === current ? 'active' : '';
+      }
+
+      function navbar(current) {
+        return `
+          <nav class="home-nav" aria-label="公司导航">
+            <a class="brand-mark" href="#/" data-route="/" aria-label="万影节拍数字有限公司首页">
+              <span class="brand-symbol">W</span>
+              <span class="brand-copy">
+                <strong>万影节拍数字有限公司</strong>
+                <span>AI Film Production</span>
+              </span>
+            </a>
+            <div class="home-links">
+              ${links.map((link) => `<a class="${linkClass(link.to, current)}" href="#${link.to}" data-route="${link.to}">${link.label}</a>`).join('')}
+            </div>
+          </nav>
+        `;
+      }
+
+      function shell(pageHtml, current) {
+        return `
+          <div class="app-shell">
+            <div class="page-shell">
+              ${navbar(current)}
+              ${pageHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderHome() {
+        return `
+          <main class="site-home">
+            <section class="home-hero" style="${styleVars(backgroundImage('scene-14.png'))}" aria-labelledby="company-title">
+              <div class="home-hero-copy">
+                <p class="eyebrow">AI Film Production Studio</p>
+                <h1 id="company-title" class="home-title">万影节拍数字有限公司</h1>
+                <p class="home-lead">以 AI 影像技术重塑电影开发、分镜预演与项目提案流程，为历史题材、文旅影像、品牌故事和国际合拍项目提供从概念到视觉落地的一体化服务。</p>
+                <div class="home-actions">
+                  <a class="primary-action" href="#/ai-film" data-route="/ai-film">进入 AI 电影制作</a>
+                  <a class="ghost-action" href="#/about" data-route="/about">了解公司</a>
+                </div>
+              </div>
+              <div class="home-stats" aria-label="公司能力概览">
+                <div><strong>20+</strong><span>镜头级分镜预演</span></div>
+                <div><strong>AI</strong><span>影视视觉工作流</span></div>
+                <div><strong>苏州</strong><span>江苏省苏州市青秀大厦1501</span></div>
+              </div>
+            </section>
+
+            <section class="home-section" aria-labelledby="business-title">
+              <div class="home-section-head">
+                <h2 id="business-title">核心业务</h2>
+                <p>围绕电影项目开发建立四个入口，让创意、视觉、公司能力和合作方式清晰可见。</p>
+              </div>
+              <div class="category-grid">
+                <a class="category-card ai" style="${styleVars(backgroundImage('scene-09.png'))}" href="#/ai-film" data-route="/ai-film"><small>01 / Production</small><h3>AI电影制作</h3><p>从概念设定、剧本拆解到分镜预演，快速形成可沟通、可拍摄、可迭代的电影项目方案。</p><span>查看项目</span></a>
+                <a class="category-card company" style="${styleVars(backgroundImage('scene-06.png'))}" href="#/about" data-route="/about"><small>02 / Company</small><h3>公司介绍</h3><p>以 AI 影像技术连接导演、编剧、美术、剪辑和制片管理，建立新一代影视生产管线。</p><span>查看详情</span></a>
+                <a class="category-card partners" style="${styleVars(backgroundImage('scene-13.png'))}" href="#/cases" data-route="/cases"><small>03 / Cases</small><h3>作品案例</h3><p>以《文天祥：丹心照汗青》为代表，展示历史先导片的镜头设计、视觉节奏与情绪推进。</p><span>查看案例</span></a>
+                <a class="category-card founder" style="${styleVars(backgroundImage('scene-18.png'))}" href="#/contact" data-route="/contact"><small>04 / Contact</small><h3>联系我们</h3><p>面向影视机构、文旅品牌、科技企业与海外发行伙伴，提供联合开发和项目制片协作。</p><span>联系合作</span></a>
+              </div>
+            </section>
+
+            <section class="home-section" aria-labelledby="partners-title">
+              <div class="home-section-head">
+                <h2 id="partners-title">适合合作对象</h2>
+                <p>帮助项目在早期降低沟通成本，让故事方向、视觉风格和预算边界更快被团队看见。</p>
+              </div>
+              <div class="partner-strip">
+                <article><strong>影视公司</strong><span>概念片、提案视觉、分镜板</span></article>
+                <article><strong>文旅品牌</strong><span>城市故事、历史人物、沉浸内容</span></article>
+                <article><strong>科技企业</strong><span>AI影像展示、品牌叙事、发布会影片</span></article>
+              </div>
+            </section>
+
+            <footer class="home-footer"><div><strong>万影节拍数字有限公司</strong><span>AI电影制作 / 分镜预演 / 项目视觉开发</span></div><div><span>地址：江苏省苏州市青秀大厦1501</span></div></footer>
+          </main>
+        `;
+      }
+
+      function renderAiFilm() {
+        return `
+          <main class="page">
+            <section class="hero page-hero" style="${styleVars(backgroundImage('scene-20.png'))}" aria-labelledby="ai-film-title">
+              <div>
+                <p class="eyebrow">AI Movie Projects</p>
+                <h1 id="ai-film-title">AI电影制作</h1>
+                <p class="lead">用生成式影像与影视制作经验，把剧本、角色、场景、分镜、动态预演和宣发视觉统一到一套可迭代的数字化流程中。</p>
+                <div class="meta-grid" aria-label="AI电影制作能力">
+                  <div class="meta-card"><strong>脚本拆解</strong><span>从故事到镜头表</span></div>
+                  <div class="meta-card"><strong>视觉预演</strong><span>快速验证风格</span></div>
+                  <div class="meta-card"><strong>项目协作</strong><span>导演制片同步推进</span></div>
+                </div>
+              </div>
+            </section>
+            <section class="home-section" aria-labelledby="workflow-title"><div class="home-section-head"><h2 id="workflow-title">制作流程</h2><p>保留原有深色电影感视觉风格，将原本弹层中的项目入口升级为独立 AI 电影制作页面。</p></div><div class="feature-list"><article class="info-panel"><h3>前期开发</h3><p>梳理题材定位、受众、人物弧光和视觉关键词，建立可供导演、编剧和制片共同讨论的项目基线。</p></article><article class="info-panel"><h3>分镜预演</h3><p>把剧本拆解为镜头节奏，快速生成关键画面、情绪氛围和建议时长，支持反复调整。</p></article><article class="info-panel"><h3>交付扩展</h3><p>围绕样片、路演、宣发海报、角色视觉和海外提案，输出适配不同场景的数字内容资产。</p></article></div></section>
+            <section class="home-section" aria-labelledby="project-title"><div class="home-section-head"><h2 id="project-title">当前项目</h2><p>当前展示一个已完成分镜网页排版的项目。点击项目卡片后进入《文天祥》20 镜专业分镜板。</p></div><a class="project-link" href="#/cases" data-route="/cases"><div class="project-thumb" aria-hidden="true"></div><div class="project-copy"><small>Historical Teaser / 20 Shots</small><h3>文天祥：丹心照汗青</h3><p>以崖山殉国、赣州举义、元营不拜、土牢正气和柴市赴义为主线的历史先导片分镜项目。</p><span>进入作品案例</span></div></a></section>
+          </main>
+        `;
+      }
+
+      function renderAbout() {
+        return `
+          <main class="page">
+            <section class="home-section page-hero" aria-labelledby="about-title"><div class="home-section-head"><h2 id="about-title">公司介绍</h2><p>万影节拍数字有限公司专注 AI 电影制作，将传统影视的叙事判断与生成式影像的效率结合，帮助项目在早期就获得更完整的视觉方向和制作节奏。</p></div><div class="info-grid"><article class="info-panel"><h3>制作能力</h3><p>公司提供故事开发、世界观设定、角色视觉、分镜脚本、动态预演、视觉风格测试和宣发物料生成，适合历史题材、文化题材、短剧、品牌片和国际合拍项目。</p></article><div><article class="info-panel"><h3>工作方式</h3><p>以项目制协作为核心，将导演意图、制片预算、视觉风格和交付周期放在同一套数字化流程中管理。</p></article><article class="info-panel"><h3>公司地址</h3><p>江苏省苏州市青秀大厦1501。</p></article></div></div></section>
+            <section class="home-section" aria-labelledby="founder-title"><div class="home-section-head"><h2 id="founder-title">创始团队理念</h2><p>创始团队以“电影叙事 + AI生产力 + 国际项目管理”为核心，推动影像项目在更短周期内完成概念验证、视觉成型和商业提案。</p></div><article class="info-panel"><h3>团队视角</h3><p>团队相信 AI 不是替代电影创作，而是让创作者更早看到画面、更快验证风格、更准确组织制作资源。万影节拍希望成为连接创意、技术与市场的 AI 电影制作伙伴。</p></article></section>
+          </main>
+        `;
+      }
+
+      function renderCases() {
+        return `
+          <main class="page">
+            <section class="hero page-hero" style="${styleVars(backgroundImage('scene-20.png'))}" aria-labelledby="storyboard-title"><div><p class="eyebrow">Historical Teaser / 20 Shots</p><h1 id="storyboard-title">文天祥：丹心照汗青</h1><p class="lead">以崖山殉国、赣州举义、元营不拜、土牢正气和柴市赴义为主线，用 20 个镜头建立历史人物的精神弧线。</p><div class="meta-grid" aria-label="作品案例信息"><div class="meta-card"><strong>20镜</strong><span>专业分镜板</span></div><div class="meta-card"><strong>历史题材</strong><span>传记史诗先导片</span></div><div class="meta-card"><strong>AI预演</strong><span>镜头情绪与节奏</span></div></div></div></section>
+            <div class="section-head"><div><p class="eyebrow">Storyboard</p><h2>专业分镜板</h2></div><p>每个镜头包含画面描述、旁白/对白、情绪关键词与建议时长，可用于提案、视觉沟通和后续动态预演。</p></div>
+            <section class="storyboard" aria-label="文天祥20镜分镜">
+              ${shots.map((shot) => `<article class="shot-card"><figure class="shot-media"><img src="${escapeHtml(shot.image)}" alt="${escapeHtml(shot.alt)}" loading="lazy" /><span class="number">${String(shot.number).padStart(2, '0')}</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot ${String(shot.number).padStart(2, '0')}</small>${escapeHtml(shot.title)}</h3><div class="field"><b>画面</b><p>${escapeHtml(shot.description)}</p></div><div class="field"><b>旁白 / 对白</b><p>${escapeHtml(shot.narration)}</p></div><div class="field"><b>情绪</b><p>${escapeHtml(shot.mood)}</p></div><div class="duration"><span>建议时长</span><strong>${escapeHtml(shot.duration)}</strong></div></div></article>`).join('')}
+            </section>
+            <footer><strong>总时长：</strong>约65秒。整体基调：悲壮、肃穆、史诗感，突出文天祥“留取丹心照汗青”的精神核心。</footer>
+          </main>
+        `;
+      }
+
+      function renderContact() {
+        return `
+          <main class="page">
+            <section class="home-section page-hero" aria-labelledby="contact-title"><div class="home-section-head"><h2 id="contact-title">联系我们</h2><p>欢迎影视机构、文旅品牌、科技企业、发行伙伴与万影节拍数字有限公司沟通 AI 电影制作、分镜预演、项目开发和联合创作。</p></div><div class="contact-card"><article class="info-panel"><h3>公司地址</h3><p>江苏省苏州市青秀大厦1501</p></article><article class="info-panel"><h3>合作方向</h3><p>AI电影制作、历史题材视觉开发、文旅影像、品牌故事片、国际合拍项目提案。</p></article></div><div class="split-actions"><a class="primary-action" href="#/ai-film" data-route="/ai-film">查看制作服务</a><a class="ghost-action" href="#/cases" data-route="/cases">查看作品案例</a></div></section>
+          </main>
+        `;
+      }
+
+      function render() {
+        const current = routeFromHash();
+        const page = routes.get(current)();
+        root.innerHTML = shell(page, current);
+        document.title = current === '/' ? '万影节拍数字有限公司｜AI电影制作' : `${links.find((link) => link.to === current)?.label ?? '万影节拍数字有限公司'}｜万影节拍数字有限公司`;
+        root.querySelectorAll('[data-route]').forEach((anchor) => {
+          anchor.addEventListener('click', (event) => {
+            event.preventDefault();
+            navigate(anchor.getAttribute('data-route'));
+          });
+        });
+      }
+
+      window.addEventListener('hashchange', render);
+      render();
+    </script>
   </body>
 </html>

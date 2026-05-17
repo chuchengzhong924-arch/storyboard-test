@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面跳转中｜万影节拍数字有限公司</title>
+    <script>
+      const repoBase = '/storyboard-test';
+      const path = window.location.pathname.replace(repoBase, '') || '/';
+      const target = `${repoBase}/#${path}${window.location.search}${window.location.hash}`;
+      window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <p>页面跳转中，请稍候……</p>
+    <p><a href="/storyboard-test/#/">返回首页</a></p>
+  </body>
+</html>

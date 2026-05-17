@@ -1,5 +1,7 @@
 export function assetUrl(fileName) {
-  return `${import.meta.env.BASE_URL}${fileName}`;
+  const isViteBuild = Boolean(import.meta.env?.BASE_URL);
+  const baseUrl = isViteBuild ? import.meta.env.BASE_URL : './public/';
+  return `${baseUrl}${fileName}`;
 }
 
 export function backgroundImage(fileName) {
