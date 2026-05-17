@@ -3,537 +3,474 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>文天祥故事分镜｜2分钟短片</title>
+  <title>文天祥先导片分镜｜丹心照汗青</title>
   <style>
     :root {
-      color-scheme: light;
-      --ink: #2d1f17;
-      --muted: #6f5b4d;
-      --paper: #f8f0df;
-      --paper-deep: #efe0c5;
-      --vermilion: #a73524;
-      --gold: #c8983d;
-      --green: #315a4a;
-      --shadow: rgba(45, 31, 23, 0.18);
+      color-scheme: dark;
+      --bg: #090b0f;
+      --bg-2: #12151c;
+      --card: rgba(20, 22, 28, 0.82);
+      --card-strong: rgba(31, 33, 40, 0.92);
+      --line: rgba(226, 197, 137, 0.22);
+      --gold: #d9b46a;
+      --gold-soft: #f2d99b;
+      --vermilion: #b7412e;
+      --text: #f6eddc;
+      --muted: #c5b8a2;
+      --dim: #8f8577;
+      --shadow: rgba(0, 0, 0, 0.42);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-      color: var(--ink);
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(200, 152, 61, 0.22), transparent 34rem),
-        linear-gradient(135deg, #fbf5e8 0%, var(--paper) 46%, #ead6b5 100%);
+        radial-gradient(circle at 18% -8%, rgba(183, 65, 46, 0.30), transparent 34rem),
+        radial-gradient(circle at 82% 2%, rgba(217, 180, 106, 0.18), transparent 32rem),
+        linear-gradient(180deg, #08090d 0%, #11141a 44%, #08090d 100%);
       min-height: 100vh;
     }
 
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 48px 20px 64px;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
     }
+
+    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 70px; }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 52px clamp(24px, 5vw, 72px);
-      border: 1px solid rgba(167, 53, 36, 0.24);
-      border-radius: 32px;
-      background: rgba(255, 250, 240, 0.74);
-      box-shadow: 0 24px 70px var(--shadow);
+      min-height: 520px;
+      display: grid;
+      align-items: end;
+      padding: clamp(28px, 6vw, 72px);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: 0 28px 90px var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(8, 9, 13, 0.90), rgba(8, 9, 13, 0.42) 55%, rgba(8, 9, 13, 0.74)),
+        url("scene-20.png") center / cover no-repeat;
+      isolation: isolate;
     }
 
     .hero::after {
-      content: "正气";
+      content: "丹心";
       position: absolute;
-      right: clamp(12px, 6vw, 84px);
-      top: -34px;
-      color: rgba(167, 53, 36, 0.08);
-      font-size: clamp(112px, 18vw, 220px);
+      right: clamp(-10px, 3vw, 52px);
+      top: -42px;
+      z-index: -1;
+      color: rgba(242, 217, 155, 0.07);
+      font-size: clamp(100px, 18vw, 230px);
       font-weight: 900;
       letter-spacing: 0.08em;
-      pointer-events: none;
+      writing-mode: vertical-rl;
     }
 
     .eyebrow {
-      margin: 0 0 12px;
-      color: var(--vermilion);
-      font-weight: 700;
-      letter-spacing: 0.24em;
+      margin: 0 0 16px;
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
     }
 
-    h1 {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      font-size: clamp(36px, 7vw, 82px);
-      line-height: 1.08;
-    }
+    h1 { margin: 0; max-width: 850px; font-size: clamp(42px, 8vw, 98px); line-height: 0.98; letter-spacing: 0.03em; }
 
-    .hero p {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 24px 0 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.8;
-    }
+    .lead { max-width: 760px; margin: 24px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 20px); line-height: 1.9; }
 
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 34px; }
+    .meta-card { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(8, 9, 13, 0.54); backdrop-filter: blur(10px); }
+    .meta-card strong { display: block; color: var(--gold-soft); font-size: 26px; line-height: 1.1; }
+    .meta-card span { display: block; margin-top: 8px; color: var(--dim); font-size: 13px; letter-spacing: 0.08em; }
 
-    .meta-card {
-      position: relative;
-      z-index: 1;
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(49, 90, 74, 0.15);
-    }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin: 58px 0 22px; }
+    .section-head h2 { margin: 0; font-size: clamp(28px, 4vw, 44px); }
+    .section-head p { max-width: 560px; margin: 0; color: var(--muted); line-height: 1.75; }
 
-    .meta-card strong {
-      display: block;
-      color: var(--green);
-      font-size: 24px;
-    }
-
-    .meta-card span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .section-title {
-      margin: 56px 0 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 28px;
-    }
-
-    .section-title::before {
-      content: "";
-      width: 42px;
-      height: 3px;
-      border-radius: 999px;
-      background: var(--vermilion);
-    }
-
-    .storyboard {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
+    .storyboard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 
     .shot-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 510px;
-      border-radius: 26px;
-      overflow: hidden;
-      background: rgba(255, 252, 245, 0.92);
-      border: 1px solid rgba(45, 31, 23, 0.12);
-      box-shadow: 0 16px 42px rgba(45, 31, 23, 0.12);
-    }
-
-    .shot-visual {
       position: relative;
-      margin: 0;
-      min-height: 212px;
+      display: grid;
+      grid-template-columns: minmax(220px, 42%) 1fr;
+      min-height: 360px;
       overflow: hidden;
-      color: #fff7e8;
-      background:
-        radial-gradient(circle at 72% 18%, var(--sun, rgba(200, 152, 61, 0.45)), transparent 13%),
-        linear-gradient(135deg, var(--wash-a, #f4ead3), var(--wash-b, #9fb7a3) 52%, var(--wash-c, #30483f));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(145deg, var(--card), rgba(12, 14, 19, 0.92));
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
     }
 
-    .shot-visual::before,
-    .shot-visual::after {
-      content: "";
+    .shot-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(217, 180, 106, 0.10), transparent 36%, rgba(183, 65, 46, 0.08)); }
+
+    .shot-media { position: relative; min-height: 100%; margin: 0; background: #1a1c22; }
+    .shot-media img { width: 100%; height: 100%; min-height: 360px; display: block; object-fit: cover; filter: saturate(0.92) contrast(1.05); }
+    .shot-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.52)); pointer-events: none; }
+
+    .number {
       position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .shot-visual::before {
-      background:
-        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.45), transparent 20%),
-        radial-gradient(circle at 82% 68%, rgba(45, 31, 23, 0.18), transparent 28%);
-      mix-blend-mode: soft-light;
-    }
-
-    .shot-visual::after {
-      opacity: 0.28;
-      background-image:
-        linear-gradient(100deg, rgba(45, 31, 23, 0.12) 0 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255, 255, 255, 0.22) 0 1px, transparent 1px);
-      background-size: 42px 42px, 100% 16px;
-    }
-
-    .shot-visual svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .shot-visual .number {
-      position: absolute;
+      left: 16px;
+      top: 16px;
       z-index: 2;
-      top: 18px;
-      left: 18px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(255, 252, 245, 0.2);
-      border: 1px solid rgba(255, 252, 245, 0.42);
-      color: #fff7e8;
-      font-weight: 800;
-      backdrop-filter: blur(3px);
-    }
-
-    .shot-visual .caption {
-      position: absolute;
-      z-index: 2;
-      right: 16px;
-      bottom: 14px;
-      padding: 6px 10px;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(246, 237, 220, 0.28);
       border-radius: 999px;
-      background: rgba(45, 31, 23, 0.28);
-      color: rgba(255, 247, 232, 0.86);
-      font-size: 13px;
+      color: var(--gold-soft);
+      background: rgba(8, 9, 13, 0.58);
+      backdrop-filter: blur(8px);
+      font-weight: 900;
       letter-spacing: 0.16em;
-      backdrop-filter: blur(4px);
     }
 
-    .ink-line {
-      fill: none;
-      stroke: rgba(45, 31, 23, 0.66);
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    .shot-body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+    .shot-title { margin: 0; font-size: clamp(23px, 2.6vw, 32px); line-height: 1.22; }
+    .shot-title small { display: block; margin-bottom: 8px; color: var(--vermilion); font-size: 12px; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.22em; text-transform: uppercase; }
 
-    .ink-fill {
-      fill: rgba(45, 31, 23, 0.58);
-    }
+    .field { padding-left: 14px; border-left: 2px solid rgba(217, 180, 106, 0.42); }
+    .field b { display: block; margin-bottom: 6px; color: var(--gold-soft); font-size: 13px; letter-spacing: 0.14em; }
+    .field p { margin: 0; color: var(--muted); line-height: 1.72; font-size: 15px; }
 
-    .paper-stroke {
-      fill: none;
-      stroke: rgba(255, 247, 232, 0.62);
-      stroke-linecap: round;
-    }
+    .duration { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 12px; border-top: 1px solid rgba(226, 197, 137, 0.14); color: var(--dim); font-size: 13px; letter-spacing: 0.08em; }
+    .duration strong { color: var(--gold-soft); font-size: 15px; }
 
-    .vermilion-fill {
-      fill: rgba(167, 53, 36, 0.78);
-    }
+    footer { margin-top: 34px; padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: rgba(20, 22, 28, 0.72); color: var(--muted); line-height: 1.85; }
+    footer strong { color: var(--gold-soft); }
 
-    .green-fill {
-      fill: rgba(49, 90, 74, 0.72);
-    }
-
-    .gold-fill {
-      fill: rgba(200, 152, 61, 0.72);
-    }
-
-    .shot-body {
-      display: grid;
-      gap: 14px;
-      padding: 20px;
-      flex: 1;
-    }
-
-    .shot-heading {
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(167, 53, 36, 0.16);
-    }
-
-    .shot-heading h3 {
-      margin: 0;
-      color: var(--ink);
-      font-size: 24px;
-      line-height: 1.28;
-    }
-
-    .shot-heading span {
-      display: inline-block;
-      margin-top: 6px;
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-    }
-
-    .field {
-      padding-left: 13px;
-      border-left: 3px solid rgba(167, 53, 36, 0.28);
-    }
-
-    .field b {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--vermilion);
-      font-size: 14px;
-      letter-spacing: 0.12em;
-    }
-
-    .field p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-
-    .duration {
-      display: inline-flex;
-      width: fit-content;
-      margin: 0 20px 20px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(200, 152, 61, 0.16);
-      color: var(--green);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(49, 90, 74, 0.1);
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    @media (max-width: 920px) {
-      .meta-grid,
-      .storyboard {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        padding: 28px 14px 44px;
-      }
-
-      .hero {
-        padding: 34px 22px;
-        border-radius: 24px;
-      }
-
-      .meta-grid,
-      .storyboard {
-        grid-template-columns: 1fr;
-      }
-
-      .shot-card {
-        min-height: auto;
-      }
+    @media (max-width: 1040px) { .storyboard { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) {
+      .page { width: min(100% - 24px, 1180px); padding-top: 22px; }
+      .hero { min-height: 560px; border-radius: 24px; background-position: 58% center; }
+      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+      .shot-card { grid-template-columns: 1fr; }
+      .shot-media img { min-height: 250px; aspect-ratio: 16 / 10; }
+      .shot-body { padding: 20px; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">Two-minute historical storyboard</p>
-      <h1 id="page-title">文天祥故事分镜</h1>
-      <p>
-        2分钟短片建议采用12个分镜，每镜约8—12秒：既能交代时代危局、抗元经历与被俘抉择，也能保留“人生自古谁无死，留取丹心照汗青”的情感高潮。
-      </p>
-      <div class="meta-grid" aria-label="影片规划">
-        <div class="meta-card"><strong>120秒</strong><span>总片长</span></div>
-        <div class="meta-card"><strong>12镜</strong><span>推荐分镜数量</span></div>
-        <div class="meta-card"><strong>8—12秒</strong><span>单镜节奏</span></div>
-        <div class="meta-card"><strong>忠义 / 山河 / 丹心</strong><span>核心主题</span></div>
+      <div>
+        <p class="eyebrow">Song Dynasty Historical Teaser · 20 Shots</p>
+        <h1 id="page-title">文天祥：丹心照汗青</h1>
+        <p class="lead">依据《文天祥》先导片综合稿重组为约一分钟网页分镜：以“崖山殉国”开篇，回溯赣州举义、雩都战场、元营不拜与土牢正气，最终抵达柴市从容赴义。</p>
+        <div class="meta-grid" aria-label="影片规划">
+          <div class="meta-card"><strong>约60秒</strong><span>总片长控制</span></div>
+          <div class="meta-card"><strong>20镜</strong><span>对应现有图片</span></div>
+          <div class="meta-card"><strong>2—4秒</strong><span>单镜节奏</span></div>
+          <div class="meta-card"><strong>宋末 / 崖山 / 正气</strong><span>核心气质</span></div>
+        </div>
       </div>
     </section>
 
-    <h2 class="section-title">分镜脚本</h2>
-    <section class="storyboard" aria-label="文天祥故事12个分镜">
+    <div class="section-head">
+      <h2>专业分镜脚本</h2>
+      <p>每张卡片按镜头编号、标题、画面、旁白/台词、情绪氛围与建议时长组织，图片自适应桌面与移动端，整体色调保持宋末历史题材的庄重史诗感。</p>
+    </div>
+
+    <section class="storyboard" aria-label="文天祥故事20个分镜">
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：临安山河风雨" style="--wash-a:#efe0c5; --wash-b:#7f918c; --wash-c:#263c3a; --sun:rgba(167,53,36,0.36);">
-          <span class="number">01</span><span class="caption">山河风雨</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="ink-fill" d="M0 159c32-37 57-47 85-24 21 17 45 20 75-5 29-24 58-25 93 9 24 23 54 22 107-12v93H0z"/><path class="ink-line" stroke-width="9" d="M58 72c35-15 68-17 96-5 34 14 73 10 118-13"/><path class="paper-stroke" stroke-width="3" d="M62 131h83M235 119h64M177 93l24-18 25 19"/><path class="vermilion-fill" d="M97 84h8v58h-8zM105 86c22 2 34 10 54 8-8 14-28 20-54 14z"/><circle class="gold-fill" cx="286" cy="52" r="24" opacity=".55"/></svg>
+        <figure class="shot-media">
+          <img src="scene-01.png" alt="第1镜：崖山帝舟殉国" loading="lazy" />
+          <span class="number">镜头 01</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>山河风雨</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>乌云压城，临安城门外军旗猎猎，百姓拖家带口避乱，远处烽烟升起。</p></div>
-          <div class="field"><b>旁白</b><p>南宋末年，山河破碎，风雨飘摇，一个读书人走向了时代的风口。</p></div>
-          <div class="field"><b>情绪氛围</b><p>沉重、紧迫、乱世压迫感。</p></div>
+          <h3 class="shot-title"><small>Shot 01</small>崖山帝舟殉国</h3>
+          <div class="field"><b>画面描述</b><p>1279年二月，崖山海面残阳如血，战船焚烧、断桅漂流。陆秀夫背负幼主赵昺立于船舷，南宋最后的帝舟被硝烟与浪涛围困。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>陆秀夫（旁白）：宁以身殉国，不可受其辱。</p></div>
+          <div class="field"><b>情绪氛围</b><p>悲怆、肃穆、王朝末日的压迫感</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：书斋少年立志" style="--wash-a:#fbf1d8; --wash-b:#d7bf86; --wash-c:#516d5b; --sun:rgba(255,247,232,0.56);">
-          <span class="number">02</span><span class="caption">少年立志</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M52 55h107v91H52zM202 52h94M202 82h70M202 112h82"/><path class="ink-line" stroke-width="8" d="M79 151c32 13 71 14 116 4 35-8 68-4 101 10"/><path class="ink-fill" d="M110 81c18 0 34 18 34 42h-68c0-24 16-42 34-42z"/><path class="vermilion-fill" d="M236 133c4-22 22-26 36-13 13 12 11 35-13 54-29-18-35-33-23-41z" opacity=".65"/><path class="gold-fill" d="M77 130h112v8H77z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-02.jpg" alt="第2镜：黑幕显影：元船押解" loading="lazy" />
+          <span class="number">镜头 02</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>少年立志</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>少年文天祥在书斋中临窗诵读，案上烛火摇曳，墙上挂着山河舆图。</p></div>
-          <div class="field"><b>旁白</b><p>文天祥自幼勤学，以圣贤气节自勉，心中早已种下报国之志。</p></div>
-          <div class="field"><b>情绪氛围</b><p>清朗、坚定、带有理想光芒。</p></div>
+          <h3 class="shot-title"><small>Shot 02</small>黑幕显影：元船押解</h3>
+          <div class="field"><b>画面描述</b><p>炮火与海浪先于画面出现；黑暗中，文天祥的侧脸被船头火光照亮。他被元军押解，跪立却脊背挺直，凝望故国沉入夜色。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>无对白，仅保留低频鼓声、海浪与远处战火。</p></div>
+          <div class="field"><b>情绪氛围</b><p>冷峻、沉默、肉身受制而精神未屈</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约9秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：殿试金榜题名" style="--wash-a:#fff2d2; --wash-b:#c89b55; --wash-c:#744735; --sun:rgba(255,231,150,0.48);">
-          <span class="number">03</span><span class="caption">金榜题名</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="gold-fill" d="M82 45h196v112H82z" opacity=".5"/><path class="paper-stroke" stroke-width="6" d="M105 70h150M105 95h123M105 120h150"/><path class="ink-line" stroke-width="10" d="M55 171c35-12 76-17 123-15 44 2 88-5 132-23"/><path class="ink-fill" d="M176 103c25 0 45 24 45 58h-90c0-34 20-58 45-58z"/><path class="vermilion-fill" d="M168 88h16l7 25h-30z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-03.jpg" alt="第3镜：海面残旗与生死誓言" loading="lazy" />
+          <span class="number">镜头 03</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>金榜题名</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>殿试放榜，文天祥身着官服立于朝堂，光线从宫门照入。</p></div>
-          <div class="field"><b>旁白</b><p>二十岁中状元，他原本可以拥有安稳仕途，却选择把一生交给国家。</p></div>
-          <div class="field"><b>情绪氛围</b><p>庄重、昂扬、命运开启。</p></div>
+          <h3 class="shot-title"><small>Shot 03</small>海面残旗与生死誓言</h3>
+          <div class="field"><b>画面描述</b><p>灰蓝海面漂浮着破碎盔甲、木板与宋旗。镜头掠过尸横海面，定格在一面被海水浸透仍未沉没的残旗上。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>文天祥（旁白）：人生自古谁无死，我文天祥与国共存亡，绝不独生。</p></div>
+          <div class="field"><b>情绪氛围</b><p>孤绝、沉痛、誓言初燃</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约9秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：朝堂临危受命" style="--wash-a:#f5dfbd; --wash-b:#a26b52; --wash-c:#2d2b2d; --sun:rgba(167,53,36,0.42);">
-          <span class="number">04</span><span class="caption">临危受命</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="7" d="M42 62h276M71 62v93M289 62v93"/><path class="ink-fill" d="M146 103c27 0 49 26 49 62h-98c0-36 22-62 49-62zM236 122c21 0 38 19 38 45h-76c0-26 17-45 38-45z"/><path class="vermilion-fill" d="M171 91l74 15-5 24-74-15z"/><path class="gold-fill" d="M184 97l43 8-3 12-43-8z"/><path class="ink-line" stroke-width="8" d="M45 171c72 16 163 12 270-12"/></svg>
+        <figure class="shot-media">
+          <img src="scene-04.png" alt="第4镜：片名：文天祥" loading="lazy" />
+          <span class="number">镜头 04</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>临危受命</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>朝堂上群臣惊惶，文天祥上前接过诏书，镜头推近他沉静的眼神。</p></div>
-          <div class="field"><b>旁白</b><p>元军南下，朝局危急。危难之时，他挺身而出，筹兵勤王。</p></div>
-          <div class="field"><b>情绪氛围</b><p>压抑中见担当，肃穆有力。</p></div>
+          <h3 class="shot-title"><small>Shot 04</small>片名：文天祥</h3>
+          <div class="field"><b>画面描述</b><p>战火余烬化作墨色云烟，金石质感的片名从黑暗中浮现；火星缓缓上升，如史册中未灭的丹心。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：山河可碎，正气不灭。</p></div>
+          <div class="field"><b>情绪氛围</b><p>庄严、凝练、传记史诗开场</p></div>
+          <div class="duration"><span>建议时长</span><strong>约2秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：变卖家产筹集义军" style="--wash-a:#f2e2c4; --wash-b:#b08b61; --wash-c:#33483b; --sun:rgba(200,152,61,0.36);">
-          <span class="number">05</span><span class="caption">变卖家产</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="ink-line" stroke-width="7" d="M53 151h111l17-57H72zM202 141h94M216 116h66M225 91h49"/><path class="gold-fill" d="M82 112h74v39H82z" opacity=".78"/><circle class="vermilion-fill" cx="210" cy="158" r="15"/><circle class="ink-fill" cx="278" cy="158" r="15"/><path class="green-fill" d="M207 70c42 2 72 11 103 32-38 4-69-1-103-14z"/><path class="paper-stroke" stroke-width="4" d="M49 173c71 8 155 5 257-8"/></svg>
+        <figure class="shot-media">
+          <img src="scene-05.png" alt="第5镜：赣州街头朝报" loading="lazy" />
+          <span class="number">镜头 05</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>变卖家产</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>家中箱柜打开，银两、书籍与器物被整理装车，乡勇在院外集结。</p></div>
-          <div class="field"><b>旁白</b><p>为组织义军，他散尽家财。个人安危，在家国存亡面前退到身后。</p></div>
-          <div class="field"><b>情绪氛围</b><p>悲壮、果决、牺牲感。</p></div>
+          <h3 class="shot-title"><small>Shot 05</small>赣州街头朝报</h3>
+          <div class="field"><b>画面描述</b><p>德祐元年，赣州街头尘土飞扬。卖朝报的小哥穿过惊惶人群，手中诏书被风吹得猎猎作响，百姓停步围听。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>卖朝报小哥：朝廷下诏，举兵勤王，举兵勤王……</p></div>
+          <div class="field"><b>情绪氛围</b><p>紧迫、民间视角、国难逼近</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约9秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：雨中烽火行军" style="--wash-a:#dfe4db; --wash-b:#6f8a83; --wash-c:#243a3a; --sun:rgba(255,255,255,0.26);">
-          <span class="number">06</span><span class="caption">烽火行军</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="3" d="M78 41l-22 47M134 34l-21 55M252 31l-23 58M307 45l-18 42"/><path class="ink-fill" d="M73 145c28-30 57-38 87-23 18 9 36 28 62 19 33-11 59-29 111-8v87H0v-46c24-11 48-20 73-29z"/><path class="vermilion-fill" d="M113 68h7v68h-7zM120 70c28 1 44 15 67 11-10 18-35 26-67 18z"/><path class="gold-fill" d="M240 90c22 3 34 19 31 40l-73-8c5-23 19-35 42-32z"/><path class="paper-stroke" stroke-width="5" d="M47 168c67 12 151 10 261-6"/></svg>
+        <figure class="shot-media">
+          <img src="scene-06.png" alt="第6镜：州衙读《哀痛诏》" loading="lazy" />
+          <span class="number">镜头 06</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>烽火行军</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>义军冒雨前行，泥水溅起，文天祥骑马回望队伍，旗帜在风中翻卷。</p></div>
-          <div class="field"><b>旁白</b><p>前路艰险，他仍带着微弱兵力奔赴战场，只为守住最后的希望。</p></div>
-          <div class="field"><b>情绪氛围</b><p>苍凉、坚韧、逆风前行。</p></div>
+          <h3 class="shot-title"><small>Shot 06</small>州衙读《哀痛诏》</h3>
+          <div class="field"><b>画面描述</b><p>州衙内光线低沉，文天祥双手捧诏，泪水落在纸面。他身后的案牍、官印与地图，映出文臣必须作出的抉择。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：一纸哀痛诏，把读书人的一生推向兵戈。</p></div>
+          <div class="field"><b>情绪氛围</b><p>悲愤、克制、责任觉醒</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：海风兵败被俘" style="--wash-a:#d9dedb; --wash-b:#617b86; --wash-c:#24303b; --sun:rgba(167,53,36,0.22);">
-          <span class="number">07</span><span class="caption">兵败被俘</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M36 149c37-10 70-10 100 0s62 10 97 0 64-10 91 0M55 170c31-7 58-7 84 0s57 7 91 0 62-7 85 0"/><path class="ink-fill" d="M76 120h176l-29 48H109z"/><path class="ink-line" stroke-width="8" d="M143 116l-27-61M143 116l80-34"/><path class="vermilion-fill" d="M98 62h7v72h-7zM105 67c20 0 33 10 53 7-9 16-29 21-53 14z" opacity=".56"/><path class="gold-fill" d="M214 112c19 0 33 18 33 43h-66c0-25 14-43 33-43z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-07.png" alt="第7镜：文家粮仓开仓" loading="lazy" />
+          <span class="number">镜头 07</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>兵败被俘</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>海风猛烈，残旗落地，文天祥被押上船，身后是散乱的甲胄与沉默士卒。</p></div>
-          <div class="field"><b>旁白</b><p>兵败之后，他落入敌手。身体可以被囚禁，信念却不肯低头。</p></div>
-          <div class="field"><b>情绪氛围</b><p>低沉、悲怆、信念未灭。</p></div>
+          <h3 class="shot-title"><small>Shot 07</small>文家粮仓开仓</h3>
+          <div class="field"><b>画面描述</b><p>沉重仓门打开，粮袋、银箱与家产被运出。家仆与义士列队接应，私家灯火转化为抗元军资。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：他倾家勤王，把一家之所有，交给破碎的山河。</p></div>
+          <div class="field"><b>情绪氛围</b><p>慷慨、决绝、由悲转为行动</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：过零丁洋孤船写诗" style="--wash-a:#e4e9e2; --wash-b:#83a5b2; --wash-c:#33455d; --sun:rgba(255,247,232,0.34);">
-          <span class="number">08</span><span class="caption">过零丁洋</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="5" d="M29 136c40-12 74-12 103 0s60 12 94 0 66-12 105 0M51 163c34-9 62-9 86 0s55 9 92 0 64-9 91 0"/><path class="ink-fill" d="M117 121h139l-31 32h-83z"/><path class="ink-line" stroke-width="6" d="M173 119l30-55M173 119l-45-42"/><path class="gold-fill" d="M207 82h54v38h-54z" opacity=".62"/><path class="paper-stroke" stroke-width="4" d="M74 78c50-25 104-29 163-13"/><path class="vermilion-fill" d="M219 172c16 3 27 12 34 29-26-6-43-16-50-30z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-08.png" alt="第8镜：大殿钦点状元" loading="lazy" />
+          <span class="number">镜头 08</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>过零丁洋</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>孤船穿过灰蓝海面，文天祥倚栏望向浪涛，手中写下诗句。</p></div>
-          <div class="field"><b>旁白</b><p>零丁洋上，他把国破家亡的痛，凝成千古不灭的诗篇。</p></div>
-          <div class="field"><b>情绪氛围</b><p>孤绝、悲凉、诗意升华。</p></div>
+          <h3 class="shot-title"><small>Shot 08</small>大殿钦点状元</h3>
+          <div class="field"><b>画面描述</b><p>回忆闪回至宝祐四年，金殿明亮。二十一岁的文天祥立于丹陛之下，衣冠整肃，宋理宗与群臣的目光落在他身上。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>宋理宗（旁白）：此天之祥，乃宋之瑞也。</p></div>
+          <div class="field"><b>情绪氛围</b><p>明亮、荣耀、命运被历史命名</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约11秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：丹心诗句铺展" style="--wash-a:#f7ead5; --wash-b:#c99576; --wash-c:#70322b; --sun:rgba(167,53,36,0.54);">
-          <span class="number">09</span><span class="caption">丹心一问</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="8" d="M70 45h220v124H70z"/><path class="ink-line" stroke-width="7" d="M105 83h82M105 111h143M105 139h113"/><path class="vermilion-fill" d="M252 83c17-22 53-6 45 25-5 18-23 36-50 53-26-23-38-42-33-60 5-18 25-25 38-18z" opacity=".82"/><path class="ink-fill" d="M52 178c58-12 120-16 186-11 29 2 55-1 79-10v63H0v-31c16-4 33-8 52-11z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-09.png" alt="第9镜：广场举义演讲" loading="lazy" />
+          <span class="number">镜头 09</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>丹心一问</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>画面转为近景，墨迹在纸上铺开：“人生自古谁无死，留取丹心照汗青。”</p></div>
-          <div class="field"><b>旁白</b><p>面对生死，他给出的答案，是让赤诚之心照亮史册。</p></div>
-          <div class="field"><b>情绪氛围</b><p>震撼、崇高、情感高潮。</p></div>
+          <h3 class="shot-title"><small>Shot 09</small>广场举义演讲</h3>
+          <div class="field"><b>画面描述</b><p>赣州广场上朱砂旗帜翻涌，文天祥由文臣袍服披上战甲，面向义兵与百姓举臂疾呼。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>文天祥：国家危难之际，人心涣散之秋，我辈更该挺身而出，振奋士气，抗争到最后一刻。</p></div>
+          <div class="field"><b>情绪氛围</b><p>昂扬、激越、群情被点燃</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
         </div>
-        <span class="duration">约11秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：牢中拒绝劝降" style="--wash-a:#d9cbb8; --wash-b:#665f58; --wash-c:#1e1d20; --sun:rgba(200,152,61,0.28);">
-          <span class="number">10</span><span class="caption">牢中劝降</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><path class="paper-stroke" stroke-width="8" d="M64 42v142M113 42v142M162 42v142M211 42v142M260 42v142M309 42v142" opacity=".7"/><path class="ink-fill" d="M168 100c25 0 45 25 45 61h-90c0-36 20-61 45-61z"/><path class="gold-fill" d="M246 126h42v39h-42z"/><path class="vermilion-fill" d="M251 98h33v28h-33z"/><circle class="gold-fill" cx="86" cy="152" r="18" opacity=".65"/><path class="ink-line" stroke-width="8" d="M40 184c76 10 164 8 278-6"/></svg>
+        <figure class="shot-media">
+          <img src="scene-10.png" alt="第10镜：文府母子托付" loading="lazy" />
+          <span class="number">镜头 10</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>牢中劝降</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>幽暗牢房中，劝降者递来官印与锦袍，文天祥端坐不动，烛光映出铁栏。</p></div>
-          <div class="field"><b>旁白</b><p>高官厚禄摆在眼前，他却以沉默与拒绝守住最后的尊严。</p></div>
-          <div class="field"><b>情绪氛围</b><p>冷峻、克制、内在强大。</p></div>
+          <h3 class="shot-title"><small>Shot 10</small>文府母子托付</h3>
+          <div class="field"><b>画面描述</b><p>室内烛光温暖而沉重，文母取下首饰放入盘中。文天祥伏身行礼，母子之间没有挽留，只有家国托付。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>文母（旁白）：无国，何来家。</p></div>
+          <div class="field"><b>情绪氛围</b><p>深情、隐忍、家国伦理的升华</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：晨雾从容赴义" style="--wash-a:#ebe7dc; --wash-b:#b7b89a; --wash-c:#394e46; --sun:rgba(255,247,232,0.6);">
-          <span class="number">11</span><span class="caption">从容赴义</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><circle class="gold-fill" cx="279" cy="60" r="33" opacity=".62"/><path class="paper-stroke" stroke-width="5" d="M37 127c70-25 153-30 250-15M50 151c64-13 134-15 210-6"/><path class="ink-fill" d="M174 89c29 0 52 29 52 72H122c0-43 23-72 52-72z"/><path class="paper-stroke" stroke-width="4" d="M146 122h57"/><path class="vermilion-fill" d="M168 71h14l9 25h-32z"/><path class="ink-line" stroke-width="8" d="M79 178c60 7 132 4 216-9"/></svg>
+        <figure class="shot-media">
+          <img src="scene-11.png" alt="第11镜：城门外出征回望" loading="lazy" />
+          <span class="number">镜头 11</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>从容赴义</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>清晨薄雾中，文天祥整理衣冠，步伐平稳走向刑场，天空透出一线晨光。</p></div>
-          <div class="field"><b>旁白</b><p>生命将尽，他从容赴死。不是没有恐惧，而是有比生命更重的信念。</p></div>
-          <div class="field"><b>情绪氛围</b><p>肃穆、悲壮、平静而有力量。</p></div>
+          <h3 class="shot-title"><small>Shot 11</small>城门外出征回望</h3>
+          <div class="field"><b>画面描述</b><p>城门开启，义军北上，旌旗与尘土遮住半边天空。文天祥在马上回望赣州，片刻后转身向前。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：回望不是犹豫，是把故土刻进心里。</p></div>
+          <div class="field"><b>情绪氛围</b><p>壮行、苍凉、离家赴国难</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约11秒</span>
       </article>
 
       <article class="shot-card">
-        <figure class="shot-visual" aria-label="水墨占位插画：浩气长存照亮山河" style="--wash-a:#fff2d7; --wash-b:#d6a85d; --wash-c:#315a4a; --sun:rgba(200,152,61,0.62);">
-          <span class="number">12</span><span class="caption">浩气长存</span>
-          <svg viewBox="0 0 360 220" role="img" aria-hidden="true"><circle class="vermilion-fill" cx="284" cy="57" r="35" opacity=".76"/><path class="ink-fill" d="M0 154c33-35 63-42 90-21 20 15 43 17 71-5 31-25 64-21 98 8 30 25 61 23 101-3v87H0z"/><path class="paper-stroke" stroke-width="7" d="M67 91c38-22 76-23 113-6 34 15 70 14 108-2"/><path class="gold-fill" d="M93 148h154v48H93z" opacity=".55"/><path class="paper-stroke" stroke-width="4" d="M111 164h104M111 181h81"/><path class="vermilion-fill" d="M251 121c24 4 42 16 57 37-34-2-56-11-70-28z"/></svg>
+        <figure class="shot-media">
+          <img src="scene-12.png" alt="第12镜：临安岔路选择" loading="lazy" />
+          <span class="number">镜头 12</span>
         </figure>
         <div class="shot-body">
-          <div class="shot-heading"><h3>浩气长存</h3><span>镜头标题</span></div>
-          <div class="field"><b>画面描述</b><p>镜头从史书翻页升起，转向今日山河与学子诵读，红日照亮书页。</p></div>
-          <div class="field"><b>旁白</b><p>岁月远去，文天祥的浩然正气仍在回响，提醒后来者何为忠义与担当。</p></div>
-          <div class="field"><b>情绪氛围</b><p>开阔、庄严、余韵悠长。</p></div>
+          <h3 class="shot-title"><small>Shot 12</small>临安岔路选择</h3>
+          <div class="field"><b>画面描述</b><p>闪回临安城外岔路，一边通往文山归隐，一边通向国事风暴。老仆牵马相随，文天祥望向兵燹方向。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>老仆（旁白）：归隐文山，稳，可大人心有不甘啊。</p></div>
+          <div class="field"><b>情绪氛围</b><p>迟疑之后的坚定、命运分岔</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
         </div>
-        <span class="duration">约10秒</span>
       </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-13.png" alt="第13镜：荒原北上" loading="lazy" />
+          <span class="number">镜头 13</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 13</small>荒原北上</h3>
+          <div class="field"><b>画面描述</b><p>青灰天空下，十万义兵沿赭黄大地延展成长龙。文天祥的旗帜在队伍前方，像乱世里被高举的一点赤色。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：从一封诏书，到万众同行，丹心终于化作铁流北上。</p></div>
+          <div class="field"><b>情绪氛围</b><p>辽阔、坚毅、史诗行军感</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-14.png" alt="第14镜：雩都战场大捷" loading="lazy" />
+          <span class="number">镜头 14</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 14</small>雩都战场大捷</h3>
+          <div class="field"><b>画面描述</b><p>夕阳血红，义兵冲入烟尘，刀戟相撞。文天祥立于战马上指挥，火光与尘土把胜利染成惨烈的颜色。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：雩都一战，他让天下知道，南宋仍有人敢战。</p></div>
+          <div class="field"><b>情绪氛围</b><p>激烈、悲壮、短暂胜利的燃点</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-15.png" alt="第15镜：元营不拜" loading="lazy" />
+          <span class="number">镜头 15</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 15</small>元营不拜</h3>
+          <div class="field"><b>画面描述</b><p>元营大帐内火盆炽烈，众人低头跪拜，唯有文天祥立而不屈。伯颜居高而坐，帐影将双方切成明暗两界。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：礼可以逼迫，气节不能下跪。</p></div>
+          <div class="field"><b>情绪氛围</b><p>压迫、对峙、冷硬尊严</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-16.png" alt="第16镜：痛骂叛臣" loading="lazy" />
+          <span class="number">镜头 16</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 16</small>痛骂叛臣</h3>
+          <div class="field"><b>画面描述</b><p>降臣上前劝说，文天祥怒目而视，衣袍虽乱，目光却如刀锋。帐中众人被他的斥责震住。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>文天祥：汝等世受国恩，却叛国降敌，猪狗不如！有何面目立于天地之间。</p></div>
+          <div class="field"><b>情绪氛围</b><p>激愤、刚烈、精神威慑</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-17.png" alt="第17镜：国玺降表蒙太奇" loading="lazy" />
+          <span class="number">镜头 17</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 17</small>国玺降表蒙太奇</h3>
+          <div class="field"><b>画面描述</b><p>国玺、降表、闭合的宫门与童年学宫交错闪回；现实的崩塌与少年时的志向相互叠化，像一道无法逃避的裂痕。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>无对白，诏书翻动声与远钟声交织。</p></div>
+          <div class="field"><b>情绪氛围</b><p>破碎、恍惚、信念经受重压</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-18.png" alt="第18镜：土牢写《正气歌》" loading="lazy" />
+          <span class="number">镜头 18</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 18</small>土牢写《正气歌》</h3>
+          <div class="field"><b>画面描述</b><p>元大都土牢，青冷月光与昏黄油灯对冲。文天祥须发蓬乱却端坐如山，在潮湿墙影前落笔写下正气。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>旁白：天地有正气，杂然赋流形。</p></div>
+          <div class="field"><b>情绪氛围</b><p>清冷、坚守、由外战转入心战</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-19.png" alt="第19镜：童年学宫立志" loading="lazy" />
+          <span class="number">镜头 19</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 19</small>童年学宫立志</h3>
+          <div class="field"><b>画面描述</b><p>闪回庐陵学宫，少年文天祥仰望先贤画像，清亮的眼神与囚室中的微笑叠化成同一个灵魂。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>小文天祥：若不能置身其间，非大丈夫也！</p></div>
+          <div class="field"><b>情绪氛围</b><p>清澈、坚定、初心回响</p></div>
+          <div class="duration"><span>建议时长</span><strong>约3秒</strong></div>
+        </div>
+      </article>
+
+      <article class="shot-card">
+        <figure class="shot-media">
+          <img src="scene-20.png" alt="第20镜：丹心照汗青" loading="lazy" />
+          <span class="number">镜头 20</span>
+        </figure>
+        <div class="shot-body">
+          <h3 class="shot-title"><small>Shot 20</small>丹心照汗青</h3>
+          <div class="field"><b>画面描述</b><p>至元十九年十二月初九，柴市刑场晨光渐白。文天祥整理衣冠，从容前行，最后的身影被白金色天光托起。</p></div>
+          <div class="field"><b>旁白 / 台词</b><p>文天祥（旁白）：留取丹心照汗青。</p></div>
+          <div class="field"><b>情绪氛围</b><p>肃穆、升华、死亡化为不朽</p></div>
+          <div class="duration"><span>建议时长</span><strong>约4秒</strong></div>
+        </div>
+      </article>
+
     </section>
 
     <footer>
-      <strong>节奏建议：</strong>前3镜快速建立人物与时代背景，中间4镜推进抗元行动与失败转折，第8—11镜集中呈现诗句、劝降与赴义，最后1镜完成历史回响。全片可配以低沉鼓点、箫声与弦乐，情绪由压抑逐步推向悲壮与崇高。
+      <strong>节奏建议：</strong>前四镜以崖山和片名迅速建立“王朝覆灭”的情绪锚点；第五至十四镜回溯文天祥由读诏、倾家、举义到战场的行动弧；第十五至二十镜集中呈现被囚后的不拜、不降、写歌与赴义。配乐可由低频鼓与海浪起，转入战场弦乐，结尾以箫声和白金色晨光收束。
     </footer>
   </main>
 </body>
