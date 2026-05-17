@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Home from './pages/Home.jsx';
 import AiFilm from './pages/AiFilm.jsx';
@@ -8,7 +8,7 @@ import Contact from './pages/Contact.jsx';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app-shell">
         <div className="page-shell">
           <Navbar />
@@ -21,6 +21,6 @@ export default function App() {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
