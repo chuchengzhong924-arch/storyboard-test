@@ -3,288 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>万影节拍数字有限公司｜AI电影制作</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #090b0f;
-      --panel: rgba(20, 22, 28, 0.86);
-      --panel-strong: rgba(31, 33, 40, 0.94);
-      --line: rgba(226, 197, 137, 0.22);
-      --gold: #d9b46a;
-      --gold-soft: #f2d99b;
-      --red: #b7412e;
-      --text: #f6eddc;
-      --muted: #c5b8a2;
-      --dim: #8f8577;
-      --shadow: rgba(0, 0, 0, 0.42);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 18% -8%, rgba(183, 65, 46, 0.30), transparent 34rem),
-        radial-gradient(circle at 82% 2%, rgba(217, 180, 106, 0.18), transparent 32rem),
-        linear-gradient(180deg, #08090d 0%, #11141a 44%, #08090d 100%);
-      min-height: 100vh;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.16;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 82%);
-    }
-    a { color: inherit; text-decoration: none; }
-    .site-home, .page { width: min(1240px, calc(100% - 32px)); margin: 0 auto; }
-    .site-home { padding: 28px 0 76px; }
-    .home-nav, .project-toolbar {
-      position: sticky;
-      top: 14px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 14px;
-      border: 1px solid rgba(226, 197, 137, 0.20);
-      border-radius: 20px;
-      background: rgba(8, 9, 13, 0.74);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
-      backdrop-filter: blur(16px);
-    }
-    .brand-mark { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand-symbol {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border: 1px solid rgba(242, 217, 155, 0.32);
-      border-radius: 12px;
-      color: var(--gold-soft);
-      background: linear-gradient(145deg, rgba(183, 65, 46, 0.42), rgba(217, 180, 106, 0.12));
-      font-family: ui-sans-serif, system-ui, sans-serif;
-      font-weight: 900;
-    }
-    .brand-copy strong { display: block; font-size: 15px; line-height: 1.2; }
-    .brand-copy span { display: block; margin-top: 3px; color: var(--dim); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
-    .home-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
-    .home-links a, .project-toolbar a {
-      padding: 9px 12px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      color: var(--muted);
-      font: 800 13px/1 ui-sans-serif, system-ui, sans-serif;
-      letter-spacing: 0.04em;
-    }
-    .home-links a:hover, .home-links a:focus-visible, .project-toolbar a:hover, .project-toolbar a:focus-visible { border-color: rgba(226, 197, 137, 0.28); color: var(--gold-soft); background: rgba(246, 237, 220, 0.05); outline: none; }
-    .home-hero {
-      position: relative;
-      overflow: hidden;
-      min-height: clamp(520px, 74vh, 680px);
-      display: grid;
-      align-items: end;
-      margin-top: 18px;
-      padding: clamp(32px, 6vw, 72px);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: 0 28px 90px var(--shadow);
-      background:
-        linear-gradient(90deg, rgba(8, 9, 13, 0.92) 0%, rgba(8, 9, 13, 0.64) 48%, rgba(8, 9, 13, 0.82) 100%),
-        url("./scene-14.png") center / cover no-repeat;
-      isolation: isolate;
-    }
-    .home-hero::after {
-      content: "AI FILM";
-      position: absolute;
-      right: clamp(18px, 6vw, 82px);
-      top: clamp(28px, 7vw, 78px);
-      z-index: -1;
-      color: rgba(242, 217, 155, 0.07);
-      font: 900 clamp(52px, 10vw, 132px)/0.9 ui-sans-serif, system-ui, sans-serif;
-      letter-spacing: 0.08em;
-      text-align: right;
-    }
-    .kicker, .eyebrow { margin: 0 0 14px; color: var(--gold-soft); font: 800 13px/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.28em; text-transform: uppercase; }
-    .home-title { margin: 0; max-width: 840px; font-size: clamp(42px, 7vw, 86px); line-height: 1.04; letter-spacing: 0.04em; text-wrap: balance; }
-    .home-lead, .lead { max-width: 760px; margin: 20px 0 0; color: var(--muted); font-size: clamp(16px, 1.8vw, 20px); line-height: 1.85; }
-    .home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .primary-action, .ghost-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      font: 900 14px/1 ui-sans-serif, system-ui, sans-serif;
-      letter-spacing: 0.08em;
-    }
-    .primary-action { color: #11141a; background: linear-gradient(135deg, var(--gold-soft), var(--gold)); box-shadow: 0 16px 30px rgba(217, 180, 106, 0.20); }
-    .ghost-action { border: 1px solid rgba(246, 237, 220, 0.26); color: var(--gold-soft); background: rgba(8, 9, 13, 0.48); }
-    .home-stats, .meta-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 760px; margin-top: 34px; }
-    .home-stat, .meta-card { padding: 16px; border: 1px solid rgba(226, 197, 137, 0.20); border-radius: 18px; background: rgba(8, 9, 13, 0.56); backdrop-filter: blur(12px); }
-    .home-stat strong, .meta-card strong { display: block; color: var(--gold-soft); font-size: 24px; line-height: 1.1; }
-    .home-stat span, .meta-card span { display: block; margin-top: 8px; color: var(--dim); font-size: 13px; letter-spacing: 0.08em; }
-    .home-section { margin-top: 52px; }
-    .home-section-head, .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
-    .home-section-head h2, .section-head h2 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.16; }
-    .home-section-head p, .section-head p { max-width: 560px; margin: 0; color: var(--muted); line-height: 1.75; }
-    .category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-    .category-card {
-      position: relative;
-      min-height: 270px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
-    }
-    .category-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(8, 9, 13, 0.76) 64%, rgba(8, 9, 13, 0.92) 100%); pointer-events: none; }
-    .category-card.ai { background: linear-gradient(180deg, rgba(8, 9, 13, 0.10), rgba(8, 9, 13, 0.92)), url("./scene-09.png") center / cover no-repeat; }
-    .category-card.company { background: linear-gradient(180deg, rgba(8, 9, 13, 0.14), rgba(8, 9, 13, 0.92)), url("./scene-06.png") center / cover no-repeat; }
-    .category-card.partners { background: linear-gradient(180deg, rgba(8, 9, 13, 0.14), rgba(8, 9, 13, 0.92)), url("./scene-13.png") center / cover no-repeat; }
-    .category-card.founder { background: linear-gradient(180deg, rgba(8, 9, 13, 0.14), rgba(8, 9, 13, 0.92)), url("./scene-18.png") center / cover no-repeat; }
-    .category-card small, .category-card h3, .category-card p, .category-card span { position: relative; z-index: 1; }
-    .category-card small { color: var(--gold-soft); font: 800 12px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; }
-    .category-card h3 { margin: 12px 0 10px; font-size: 24px; line-height: 1.2; }
-    .category-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.68; }
-    .category-card span { margin-top: 18px; color: var(--gold-soft); font: 900 13px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.08em; }
-    .info-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; }
-    .info-panel, .home-footer, footer { padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(20, 22, 28, 0.72); color: var(--muted); line-height: 1.82; box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18); }
-    .info-panel h3 { margin: 0 0 12px; color: var(--gold-soft); font-size: 24px; }
-    .info-panel p { margin: 0; }
-    .info-panel + .info-panel { margin-top: 18px; }
-    .partner-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-    .partner-strip span { padding: 16px; border: 1px solid rgba(226, 197, 137, 0.18); border-radius: 16px; color: var(--muted); background: rgba(8, 9, 13, 0.42); text-align: center; }
-    .home-footer { display: flex; justify-content: space-between; gap: 22px; margin-top: 42px; }
-    .home-footer strong, footer strong { color: var(--gold-soft); }
-    .project-modal { position: fixed; inset: 0; z-index: 60; display: none; place-items: center; padding: 24px; background: rgba(3, 4, 7, 0.78); backdrop-filter: blur(14px); }
-    .project-modal:target { display: grid; }
-    .project-dialog { position: relative; width: min(940px, 100%); overflow: hidden; border: 1px solid rgba(226, 197, 137, 0.28); border-radius: 24px; background: linear-gradient(145deg, rgba(20, 22, 28, 0.96), rgba(8, 9, 13, 0.98)); box-shadow: 0 34px 110px rgba(0, 0, 0, 0.52); }
-    .project-dialog-head { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding: 24px; border-bottom: 1px solid rgba(226, 197, 137, 0.14); }
-    .project-dialog-head h2 { margin: 0; font-size: clamp(28px, 4vw, 42px); }
-    .project-dialog-head p { margin: 8px 0 0; color: var(--muted); line-height: 1.7; }
-    .modal-close { display: grid; flex: 0 0 auto; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(246, 237, 220, 0.22); border-radius: 999px; color: var(--gold-soft); background: rgba(8, 9, 13, 0.62); font: 900 20px/1 ui-sans-serif, system-ui, sans-serif; }
-    .project-list { padding: 24px; }
-    .project-link { display: grid; grid-template-columns: minmax(240px, 0.86fr) minmax(0, 1fr); overflow: hidden; border: 1px solid rgba(226, 197, 137, 0.22); border-radius: 20px; background: rgba(8, 9, 13, 0.52); }
-    .project-thumb { min-height: 260px; background: linear-gradient(180deg, rgba(8, 9, 13, 0.04), rgba(8, 9, 13, 0.70)), url("./scene-20.png") center / cover no-repeat; }
-    .project-copy { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 26px; }
-    .project-copy small { color: var(--gold-soft); font: 800 12px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; }
-    .project-copy h3 { margin: 0; font-size: clamp(26px, 4vw, 38px); line-height: 1.15; }
-    .project-copy p { margin: 0; color: var(--muted); line-height: 1.75; }
-    .project-copy span { color: var(--gold-soft); font: 900 13px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.08em; }
-    .page { padding: 40px 0 70px; }
-    .project-toolbar { margin-bottom: 18px; }
-    .hero { position: relative; overflow: hidden; min-height: clamp(420px, 48vw, 560px); display: grid; align-items: end; padding: clamp(28px, 5vw, 60px); border: 1px solid var(--line); border-radius: 34px; box-shadow: 0 28px 90px var(--shadow); background: linear-gradient(90deg, rgba(8, 9, 13, 0.90), rgba(8, 9, 13, 0.42) 55%, rgba(8, 9, 13, 0.74)), url("./scene-20.png") center / cover no-repeat; isolation: isolate; }
-    .hero::after { content: "丹心"; position: absolute; right: clamp(-10px, 3vw, 52px); top: -42px; z-index: -1; color: rgba(242, 217, 155, 0.07); font-size: clamp(100px, 18vw, 230px); font-weight: 900; letter-spacing: 0.08em; writing-mode: vertical-rl; }
-    h1 { margin: 0; max-width: 780px; font-size: clamp(38px, 6vw, 78px); line-height: 1.05; letter-spacing: 0.03em; text-wrap: balance; }
-    .section-head { margin-top: 58px; }
-    .storyboard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
-    .shot-card { position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; background: linear-gradient(145deg, var(--panel), rgba(12, 14, 19, 0.94)); box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28); }
-    .shot-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(217, 180, 106, 0.10), transparent 36%, rgba(183, 65, 46, 0.08)); }
-    .shot-media { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0; overflow: hidden; background: #1a1c22; }
-    .shot-media img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(0.92) contrast(1.05); }
-    .shot-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.52)); pointer-events: none; }
-    .number { position: absolute; left: 16px; top: 16px; z-index: 2; display: inline-flex; padding: 8px 12px; border: 1px solid rgba(246, 237, 220, 0.28); border-radius: 999px; color: var(--gold-soft); background: rgba(8, 9, 13, 0.58); backdrop-filter: blur(8px); font-weight: 900; letter-spacing: 0.16em; }
-    .shot-body { position: relative; z-index: 1; display: flex; flex: 1; flex-direction: column; gap: 16px; padding: 24px 24px 26px; }
-    .shot-title { margin: 0; font-size: clamp(23px, 2.2vw, 30px); line-height: 1.22; }
-    .shot-title small { display: block; margin-bottom: 8px; color: var(--red); font-size: 12px; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.22em; text-transform: uppercase; }
-    .field { padding-left: 14px; border-left: 2px solid rgba(217, 180, 106, 0.42); }
-    .field b { display: block; margin-bottom: 6px; color: var(--gold-soft); font-size: 13px; letter-spacing: 0.14em; }
-    .field p { margin: 0; color: var(--muted); line-height: 1.72; font-size: 15px; }
-    .duration { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 12px; border-top: 1px solid rgba(226, 197, 137, 0.14); color: var(--dim); font-size: 13px; letter-spacing: 0.08em; }
-    .duration strong { color: var(--gold-soft); font-size: 15px; }
-    footer { margin-top: 34px; }
-    @media (max-width: 1020px) { .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .info-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 900px) { .home-nav { position: relative; top: 0; align-items: flex-start; flex-direction: column; } .home-links { justify-content: flex-start; } .home-hero { min-height: 620px; background-position: 58% center; } .home-section-head, .section-head { display: block; } .home-section-head p, .section-head p { margin-top: 12px; } .project-link { grid-template-columns: 1fr; } .project-thumb { min-height: 240px; aspect-ratio: 16 / 9; } .storyboard { grid-template-columns: 1fr; gap: 22px; } }
-    @media (max-width: 760px) { .site-home, .page { width: min(100% - 24px, 1240px); } .site-home { padding-top: 18px; } .home-title { font-size: clamp(38px, 12vw, 62px); } .home-stats, .meta-grid, .category-grid, .partner-strip { grid-template-columns: 1fr; } .category-card { min-height: 240px; } .home-footer { display: block; } .home-footer div + div { margin-top: 14px; } .project-dialog-head { display: block; } .modal-close { position: absolute; right: 24px; top: 24px; } .hero { min-height: 460px; border-radius: 24px; background-position: 58% center; } .shot-body { padding: 20px; } }
-    @media (max-width: 520px) { .site-home, .page { width: min(100% - 18px, 1240px); } .home-hero { min-height: 560px; padding: 26px 20px; border-radius: 24px; } .home-actions a { width: 100%; } .info-panel, .project-dialog-head, .project-list, .project-copy { padding: 20px; } .project-toolbar { position: relative; top: 0; align-items: flex-start; flex-direction: column; } .shot-card { border-radius: 22px; } .number { left: 12px; top: 12px; padding: 7px 10px; font-size: 13px; } }
-  </style>
+  <title>万影节拍数字有限公司｜首页</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <main id="home" class="site-home">
     <nav class="home-nav" aria-label="公司导航">
-      <a class="brand-mark" href="#home" aria-label="万影节拍数字有限公司首页"><span class="brand-symbol">W</span><span class="brand-copy"><strong>万影节拍数字有限公司</strong><span>AI Film Production</span></span></a>
-      <div class="home-links"><a href="#project-modal">AI电影制作</a><a href="#company-about">公司介绍</a><a href="#partners">合作企业</a><a href="#founder">创始人介绍</a></div>
+      <a class="brand-mark" href="index.html" aria-label="万影节拍数字有限公司首页"><span class="brand-symbol">W</span><span class="brand-copy"><strong>万影节拍数字有限公司</strong><span>AI Film Production</span></span></a>
+      <div class="home-links"><a href="ai-film.html">AI电影制作</a><a href="company.html">公司介绍</a><a href="partners.html">合作企业</a><a href="founder.html">创始人介绍</a></div>
     </nav>
     <section class="home-hero" aria-labelledby="company-title">
       <div>
         <p class="kicker">International AI Film Studio</p>
         <h1 id="company-title" class="home-title">万影节拍数字有限公司</h1>
         <p class="home-lead">一家面向国际市场的 AI 电影制作公司，融合剧本开发、视觉预演、分镜生成、虚拟拍摄与后期流程，为历史、科幻、品牌影像和商业短片提供从创意到成片的数字化制作能力。</p>
-        <div class="home-actions"><a class="primary-action" href="#project-modal">进入 AI 电影制作</a><a class="ghost-action" href="#company-about">了解公司</a></div>
+        <div class="home-actions"><a class="primary-action" href="ai-film.html">进入 AI 电影制作</a><a class="ghost-action" href="company.html">了解公司</a></div>
         <div class="home-stats" aria-label="公司能力概览"><div class="home-stat"><strong>AI影像</strong><span>创意到成片流程</span></div><div class="home-stat"><strong>国际化</strong><span>面向全球项目协作</span></div><div class="home-stat"><strong>苏州</strong><span>青秀大厦1501</span></div></div>
       </div>
     </section>
     <section class="home-section" aria-labelledby="category-title">
-      <div class="home-section-head"><h2 id="category-title">四大栏目</h2><p>首页以公司能力为入口，把项目、公司、合作资源和创始团队清晰分层；点击“AI电影制作”会弹出项目面板，可进入《文天祥》分镜页面。</p></div>
+      <div class="home-section-head"><h2 id="category-title">四大栏目</h2><p>首页只保留公司入口与栏目导航；每个栏目独立为子页面，项目分镜也归入“AI电影制作”栏目管理。</p></div>
       <div class="category-grid">
-        <a class="category-card ai" href="#project-modal"><small>01 / Production</small><h3>AI电影制作</h3><p>从概念设定、剧本拆解到分镜预演，快速形成可沟通、可拍摄、可迭代的电影项目方案。</p><span>查看项目</span></a>
-        <a class="category-card company" href="#company-about"><small>02 / Company</small><h3>公司介绍</h3><p>以 AI 影像技术连接导演、编剧、美术、剪辑和制片管理，建立新一代影视生产管线。</p><span>查看详情</span></a>
-        <a class="category-card partners" href="#partners"><small>03 / Partners</small><h3>合作企业</h3><p>面向影视机构、文旅品牌、科技企业与海外发行伙伴，提供联合开发和项目制片协作。</p><span>合作方向</span></a>
-        <a class="category-card founder" href="#founder"><small>04 / Founder</small><h3>创始人介绍</h3><p>创始团队兼具影视叙事、AI 工具链、跨国协作和数字内容商业化经验。</p><span>团队视角</span></a>
+        <a class="category-card ai" href="ai-film.html"><small>01 / Production</small><h3>AI电影制作</h3><p>从概念设定、剧本拆解到分镜预演，快速形成可沟通、可拍摄、可迭代的电影项目方案。</p><span>进入栏目</span></a>
+        <a class="category-card company" href="company.html"><small>02 / Company</small><h3>公司介绍</h3><p>以 AI 影像技术连接导演、编剧、美术、剪辑和制片管理，建立新一代影视生产管线。</p><span>进入栏目</span></a>
+        <a class="category-card partners" href="partners.html"><small>03 / Partners</small><h3>合作企业</h3><p>面向影视机构、文旅品牌、科技企业与海外发行伙伴，提供联合开发和项目制片协作。</p><span>进入栏目</span></a>
+        <a class="category-card founder" href="founder.html"><small>04 / Founder</small><h3>创始人介绍</h3><p>创始团队兼具影视叙事、AI 工具链、跨国协作和数字内容商业化经验。</p><span>进入栏目</span></a>
       </div>
-    </section>
-    <section id="company-about" class="home-section" aria-labelledby="about-title">
-      <div class="home-section-head"><h2 id="about-title">公司介绍</h2><p>万影节拍数字有限公司专注 AI 电影制作，将传统影视的叙事判断与生成式影像的效率结合，帮助项目在早期就获得更完整的视觉方向和制作节奏。</p></div>
-      <div class="info-grid"><article class="info-panel"><h3>制作能力</h3><p>公司提供故事开发、世界观设定、角色视觉、分镜脚本、动态预演、视觉风格测试和宣发物料生成，适合历史题材、文化题材、短剧、品牌片和国际合拍项目。</p></article><div><article class="info-panel"><h3>工作方式</h3><p>以项目制协作为核心，将导演意图、制片预算、视觉风格和交付周期放在同一套数字化流程中管理。</p></article><article class="info-panel"><h3>公司地址</h3><p>江苏省苏州市青秀大厦1501。</p></article></div></div>
-    </section>
-    <section id="partners" class="home-section" aria-labelledby="partners-title">
-      <div class="home-section-head"><h2 id="partners-title">合作企业</h2><p>合作方向覆盖内容出品、技术研发、影视教育、文旅 IP、品牌影像和海外发行，适合共同孵化 AI 电影样片与系列项目。</p></div>
-      <div class="partner-strip" aria-label="合作企业类型"><span>影视出品机构</span><span>AI技术平台</span><span>文旅与文化品牌</span><span>院校与实验室</span><span>广告与品牌客户</span><span>国际发行伙伴</span></div>
-    </section>
-    <section id="founder" class="home-section" aria-labelledby="founder-title">
-      <div class="home-section-head"><h2 id="founder-title">创始人介绍</h2><p>创始团队以“电影叙事 + AI生产力 + 国际项目管理”为核心，推动影像项目在更短周期内完成概念验证、视觉成型和商业提案。</p></div>
-      <article class="info-panel"><h3>创始团队理念</h3><p>团队相信 AI 不是替代电影创作，而是让创作者更早看到画面、更快验证风格、更准确组织制作资源。万影节拍希望成为连接创意、技术与市场的 AI 电影制作伙伴。</p></article>
     </section>
     <footer class="home-footer"><div><strong>公司地址：</strong>苏州青秀大厦1501</div><div><strong>业务方向：</strong>AI电影制作、分镜预演、数字内容开发、国际项目协作</div></footer>
   </main>
-  <section id="project-modal" class="project-modal" aria-labelledby="project-modal-title">
-    <div class="project-dialog" role="dialog" aria-modal="true">
-      <div class="project-dialog-head"><div><p class="kicker">AI Movie Projects</p><h2 id="project-modal-title">AI电影制作项目</h2><p>当前展示一个已完成分镜网页排版的项目。点击项目卡片后进入《文天祥》20 镜专业分镜板。</p></div><a class="modal-close" href="#home" aria-label="关闭项目弹层">×</a></div>
-      <div class="project-list"><a class="project-link" href="#storyboard-page"><div class="project-thumb" aria-hidden="true"></div><div class="project-copy"><small>Historical Teaser / 20 Shots</small><h3>文天祥：丹心照汗青</h3><p>以崖山殉国、赣州举义、元营不拜、土牢正气和柴市赴义为主线的历史先导片分镜项目。</p><span>进入分镜页面</span></div></a></div>
-    </div>
-  </section>
-  <main id="storyboard-page" class="page storyboard-page">
-    <nav class="project-toolbar" aria-label="项目页面导航"><a href="#home">返回公司首页</a><a href="#project-modal">AI电影制作项目</a></nav>
-    <section class="hero" aria-labelledby="page-title">
-      <div><p class="eyebrow">Song Dynasty Historical Teaser · 20 Shots</p><h1 id="page-title">文天祥：丹心照汗青</h1><p class="lead">依据《文天祥》先导片综合稿重组为约一分钟网页分镜：以“崖山殉国”开篇，回溯赣州举义、雩都战场、元营不拜与土牢正气，最终抵达柴市从容赴义。</p><div class="meta-grid" aria-label="影片规划"><div class="meta-card"><strong>约60秒</strong><span>总片长控制</span></div><div class="meta-card"><strong>20镜</strong><span>对应现有图片</span></div><div class="meta-card"><strong>2-4秒</strong><span>单镜节奏</span></div></div></div>
-    </section>
-    <div class="section-head"><h2>专业分镜脚本</h2><p>每张卡片按镜头编号、标题、画面、旁白/台词、情绪氛围与建议时长组织，图片自适应桌面与移动端，整体色调保持宋末历史题材的庄重史诗感。</p></div>
-    <section class="storyboard" aria-label="文天祥故事20个分镜">
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-01.png" alt="第1镜：崖山帝舟殉国" loading="lazy" /><span class="number">镜头 01</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 01</small>崖山帝舟殉国</h3><div class="field"><b>画面描述</b><p>1279年二月，崖山海面残阳如血，战船焚烧、断桅漂流。陆秀夫背负幼主赵昺立于船舷，南宋最后的帝舟被硝烟与浪涛围困。</p></div><div class="field"><b>旁白 / 台词</b><p>陆秀夫（旁白）：宁以身殉国，不可受其辱。</p></div><div class="field"><b>情绪氛围</b><p>悲怆、肃穆、王朝末日的压迫感</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-02.png" alt="第2镜：黑幕显影：元船押解" loading="lazy" /><span class="number">镜头 02</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 02</small>黑幕显影：元船押解</h3><div class="field"><b>画面描述</b><p>炮火与海浪先于画面出现；黑暗中，文天祥的侧脸被船头火光照亮。他被元军押解，跪立却脊背挺直，凝望故国沉入夜色。</p></div><div class="field"><b>旁白 / 台词</b><p>无对白，仅保留低频鼓声、海浪与远处战火。</p></div><div class="field"><b>情绪氛围</b><p>冷峻、沉默、肉身受制而精神未屈</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-03.png" alt="第3镜：海面残旗与生死誓言" loading="lazy" /><span class="number">镜头 03</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 03</small>海面残旗与生死誓言</h3><div class="field"><b>画面描述</b><p>灰蓝海面漂浮着破碎盔甲、木板与宋旗。镜头掠过尸横海面，定格在一面被海水浸透仍未沉没的残旗上。</p></div><div class="field"><b>旁白 / 台词</b><p>文天祥（旁白）：人生自古谁无死，我文天祥与国共存亡，绝不独生。</p></div><div class="field"><b>情绪氛围</b><p>孤绝、沉痛、誓言初燃</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-04.png" alt="第4镜：片名：文天祥" loading="lazy" /><span class="number">镜头 04</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 04</small>片名：文天祥</h3><div class="field"><b>画面描述</b><p>战火余烬化作墨色云烟，金石质感的片名从黑暗中浮现；火星缓缓上升，如史册中未灭的丹心。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：山河可碎，正气不灭。</p></div><div class="field"><b>情绪氛围</b><p>庄严、凝练、传记史诗开场</p></div><div class="duration"><span>建议时长</span><strong>约2秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-05.png" alt="第5镜：赣州街头朝报" loading="lazy" /><span class="number">镜头 05</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 05</small>赣州街头朝报</h3><div class="field"><b>画面描述</b><p>德祐元年，赣州街头尘土飞扬。卖朝报的小哥穿过惊惶人群，手中诏书被风吹得猎猎作响，百姓停步围听。</p></div><div class="field"><b>旁白 / 台词</b><p>卖朝报小哥：朝廷下诏，举兵勤王，举兵勤王……</p></div><div class="field"><b>情绪氛围</b><p>紧迫、民间视角、国难逼近</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-06.png" alt="第6镜：州衙读《哀痛诏》" loading="lazy" /><span class="number">镜头 06</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 06</small>州衙读《哀痛诏》</h3><div class="field"><b>画面描述</b><p>州衙内光线低沉，文天祥双手捧诏，泪水落在纸面。他身后的案牍、官印与地图，映出文臣必须作出的抉择。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：一纸哀痛诏，把读书人的一生推向兵戈。</p></div><div class="field"><b>情绪氛围</b><p>悲愤、克制、责任觉醒</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-07.png" alt="第7镜：文家粮仓开仓" loading="lazy" /><span class="number">镜头 07</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 07</small>文家粮仓开仓</h3><div class="field"><b>画面描述</b><p>沉重仓门打开，粮袋、银箱与家产被运出。家仆与义士列队接应，私家灯火转化为抗元军资。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：他倾家勤王，把一家之所有，交给破碎的山河。</p></div><div class="field"><b>情绪氛围</b><p>慷慨、决绝、由悲转为行动</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-08.png" alt="第8镜：大殿钦点状元" loading="lazy" /><span class="number">镜头 08</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 08</small>大殿钦点状元</h3><div class="field"><b>画面描述</b><p>回忆闪回至宝祐四年，金殿明亮。二十一岁的文天祥立于丹陛之下，衣冠整肃，宋理宗与群臣的目光落在他身上。</p></div><div class="field"><b>旁白 / 台词</b><p>宋理宗（旁白）：此天之祥，乃宋之瑞也。</p></div><div class="field"><b>情绪氛围</b><p>明亮、荣耀、命运被历史命名</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-09.png" alt="第9镜：广场举义演讲" loading="lazy" /><span class="number">镜头 09</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 09</small>广场举义演讲</h3><div class="field"><b>画面描述</b><p>赣州广场上朱砂旗帜翻涌，文天祥由文臣袍服披上战甲，面向义兵与百姓举臂疾呼。</p></div><div class="field"><b>旁白 / 台词</b><p>文天祥：国家危难之际，人心涣散之秋，我辈更该挺身而出，振奋士气，抗争到最后一刻。</p></div><div class="field"><b>情绪氛围</b><p>昂扬、激越、群情被点燃</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-10.png" alt="第10镜：文府母子托付" loading="lazy" /><span class="number">镜头 10</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 10</small>文府母子托付</h3><div class="field"><b>画面描述</b><p>室内烛光温暖而沉重，文母取下首饰放入盘中。文天祥伏身行礼，母子之间没有挽留，只有家国托付。</p></div><div class="field"><b>旁白 / 台词</b><p>文母（旁白）：无国，何来家。</p></div><div class="field"><b>情绪氛围</b><p>深情、隐忍、家国伦理的升华</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-11.png" alt="第11镜：城门外出征回望" loading="lazy" /><span class="number">镜头 11</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 11</small>城门外出征回望</h3><div class="field"><b>画面描述</b><p>城门开启，义军北上，旌旗与尘土遮住半边天空。文天祥在马上回望赣州，片刻后转身向前。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：回望不是犹豫，是把故土刻进心里。</p></div><div class="field"><b>情绪氛围</b><p>壮行、苍凉、离家赴国难</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-12.png" alt="第12镜：临安岔路选择" loading="lazy" /><span class="number">镜头 12</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 12</small>临安岔路选择</h3><div class="field"><b>画面描述</b><p>闪回临安城外岔路，一边通往文山归隐，一边通向国事风暴。老仆牵马相随，文天祥望向兵燹方向。</p></div><div class="field"><b>旁白 / 台词</b><p>老仆（旁白）：归隐文山，稳，可大人心有不甘啊。</p></div><div class="field"><b>情绪氛围</b><p>迟疑之后的坚定、命运分岔</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-13.png" alt="第13镜：荒原北上" loading="lazy" /><span class="number">镜头 13</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 13</small>荒原北上</h3><div class="field"><b>画面描述</b><p>青灰天空下，十万义兵沿赭黄大地延展成长龙。文天祥的旗帜在队伍前方，像乱世里被高举的一点赤色。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：从一封诏书，到万众同行，丹心终于化作铁流北上。</p></div><div class="field"><b>情绪氛围</b><p>辽阔、坚毅、史诗行军感</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-14.png" alt="第14镜：雩都战场大捷" loading="lazy" /><span class="number">镜头 14</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 14</small>雩都战场大捷</h3><div class="field"><b>画面描述</b><p>夕阳血红，义兵冲入烟尘，刀戟相撞。文天祥立于战马上指挥，火光与尘土把胜利染成惨烈的颜色。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：雩都一战，他让天下知道，南宋仍有人敢战。</p></div><div class="field"><b>情绪氛围</b><p>激烈、悲壮、短暂胜利的燃点</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-15.png" alt="第15镜：元营不拜" loading="lazy" /><span class="number">镜头 15</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 15</small>元营不拜</h3><div class="field"><b>画面描述</b><p>元营大帐内火盆炽烈，众人低头跪拜，唯有文天祥立而不屈。伯颜居高而坐，帐影将双方切成明暗两界。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：礼可以逼迫，气节不能下跪。</p></div><div class="field"><b>情绪氛围</b><p>压迫、对峙、冷硬尊严</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-16.png" alt="第16镜：痛骂叛臣" loading="lazy" /><span class="number">镜头 16</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 16</small>痛骂叛臣</h3><div class="field"><b>画面描述</b><p>降臣上前劝说，文天祥怒目而视，衣袍虽乱，目光却如刀锋。帐中众人被他的斥责震住。</p></div><div class="field"><b>旁白 / 台词</b><p>文天祥：汝等世受国恩，却叛国降敌，猪狗不如！有何面目立于天地之间。</p></div><div class="field"><b>情绪氛围</b><p>激愤、刚烈、精神威慑</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-17.png" alt="第17镜：国玺降表蒙太奇" loading="lazy" /><span class="number">镜头 17</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 17</small>国玺降表蒙太奇</h3><div class="field"><b>画面描述</b><p>国玺、降表、闭合的宫门与童年学宫交错闪回；现实的崩塌与少年时的志向相互叠化，像一道无法逃避的裂痕。</p></div><div class="field"><b>旁白 / 台词</b><p>无对白，诏书翻动声与远钟声交织。</p></div><div class="field"><b>情绪氛围</b><p>破碎、恍惚、信念经受重压</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-18.png" alt="第18镜：土牢写《正气歌》" loading="lazy" /><span class="number">镜头 18</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 18</small>土牢写《正气歌》</h3><div class="field"><b>画面描述</b><p>元大都土牢，青冷月光与昏黄油灯对冲。文天祥须发蓬乱却端坐如山，在潮湿墙影前落笔写下正气。</p></div><div class="field"><b>旁白 / 台词</b><p>旁白：天地有正气，杂然赋流形。</p></div><div class="field"><b>情绪氛围</b><p>清冷、坚守、由外战转入心战</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-19.png" alt="第19镜：童年学宫立志" loading="lazy" /><span class="number">镜头 19</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 19</small>童年学宫立志</h3><div class="field"><b>画面描述</b><p>闪回庐陵学宫，少年文天祥仰望先贤画像，清亮的眼神与囚室中的微笑叠化成同一个灵魂。</p></div><div class="field"><b>旁白 / 台词</b><p>小文天祥：若不能置身其间，非大丈夫也！</p></div><div class="field"><b>情绪氛围</b><p>清澈、坚定、初心回响</p></div><div class="duration"><span>建议时长</span><strong>约3秒</strong></div></div></article>
-      <article class="shot-card"><figure class="shot-media"><img src="./scene-20.png" alt="第20镜：丹心照汗青" loading="lazy" /><span class="number">镜头 20</span></figure><div class="shot-body"><h3 class="shot-title"><small>Shot 20</small>丹心照汗青</h3><div class="field"><b>画面描述</b><p>至元十九年十二月初九，柴市刑场晨光渐白。文天祥整理衣冠，从容前行，最后的身影被白金色天光托起。</p></div><div class="field"><b>旁白 / 台词</b><p>文天祥（旁白）：留取丹心照汗青。</p></div><div class="field"><b>情绪氛围</b><p>肃穆、升华、死亡化为不朽</p></div><div class="duration"><span>建议时长</span><strong>约4秒</strong></div></div></article>
-    </section>
-    <footer><strong>节奏建议：</strong>前四镜以崖山和片名迅速建立“王朝覆灭”的情绪锚点；第五至十四镜回溯文天祥由读诏、倾家、举义到战场的行动弧；第十五至二十镜集中呈现被囚后的不拜、不降、写歌与赴义。配乐可由低频鼓与海浪起，转入战场弦乐，结尾以箫声和白金色晨光收束。</footer>
-  </main>
+
 </body>
 </html>
